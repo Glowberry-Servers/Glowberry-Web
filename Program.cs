@@ -1,4 +1,4 @@
-﻿namespace Glowberry_Web
+﻿namespace glowberry
 {
     internal class Program
     {
