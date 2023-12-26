@@ -7,8 +7,8 @@
         <ProjectGuid>{B857E4C4-4AC0-40A6-B50B-589914AE0A36}</ProjectGuid>
         <OutputType>Exe</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>glowbery-webserver</RootNamespace>
-        <AssemblyName>glowberry</AssemblyName>
+        <RootNamespace>glowbery</RootNamespace>
+        <AssemblyName>glowberry-webserver</AssemblyName>
         <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,6 +32,9 @@
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
+    <PropertyGroup>
+        <ApplicationIcon>..\Glowberry-Assets\main\logo-webserver.ico</ApplicationIcon>
+    </PropertyGroup>
     <ItemGroup>
         <Reference Include="System" />
         <Reference Include="System.Core" />
@@ -42,24 +45,36 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Content Include="..\Glowberry-Assets\main\logo.ico">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
         <Content Include="..\Glowberry-Helper\bin\Release\gbhelper.exe">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
         <Content Include="..\Glowberry-Console\bin\Release\glowberry.exe">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
+        <Content Include="startup.bat">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="attributes\Endpoint.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="web\server\extensions\HttpListenerResponseExtensions.cs" />
+        <Compile Include="web\server\GlowberryAPIGetEndpoints.cs" />
+        <Compile Include="web\server\GlowberryAPIPostEndpoints.cs" />
+        <Compile Include="web\server\GlowberryWebServer.cs" />
     </ItemGroup>
     <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
         <PackageReference Include="Open.Nat" Version="2.1.0" />
     </ItemGroup>
+    <ItemGroup>
+      <WebAppSourceFiles Include="web\app\**\*.*" />
+    </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+    <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
+        <Copy SourceFiles="@(WebAppSourceFiles)" DestinationFolder="$(OutputPath)webapp" SkipUnchangedFiles="true" />
+    </Target>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">

@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Glowberry_Web")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Glowberry Webserver")]
+[assembly: AssemblyDescription("A webserver used to connect the Glowberry Web App to the internal functions through the API ")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Glowberry_Web")]
+[assembly: AssemblyCompany("Glowberry")]
+[assembly: AssemblyProduct("Glowberry Webserver")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
