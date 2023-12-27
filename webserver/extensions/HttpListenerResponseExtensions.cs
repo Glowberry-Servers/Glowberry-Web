@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Net;
 
-namespace glowberry.web.server.extensions
+namespace glowberry.webserver.extensions
 {
     /// <summary>
     /// This class implements extension methods for the HttpListenerResponse class to simplify

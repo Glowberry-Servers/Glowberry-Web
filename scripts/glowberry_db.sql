@@ -8,9 +8,9 @@ USE Glowberry;
 # Creates the web app permissions table, to allow for the management of app functionalities.
 CREATE TABLE WebAppPermission
 (
-	permission_name     VARCHAR(32) NOT NULL,
+	permission_name        VARCHAR(32) NOT NULL,
 	permission_description TEXT,
-	permissions_integer BIGINT      NOT NULL,
+	permissions_integer    BIGINT      NOT NULL,
 
 	PRIMARY KEY (permissions_integer)
 );
@@ -94,7 +94,7 @@ INSERT INTO User VALUES ('admin', 'admin', NULL, NOW(), NULL, 'Administrator', -
 CREATE TABLE Server
 (
 	server_uuid VARCHAR(128) NOT NULL,
-	name        VARCHAR(32) NOT NULL,
+	name        VARCHAR(32)  NOT NULL,
 
 	PRIMARY KEY (server_uuid)
 );
@@ -102,9 +102,9 @@ CREATE TABLE Server
 # Since a server can have multiple users registered to it, we need a mapping table to map users to servers.
 CREATE TABLE ServerUser
 (
-	server_uuid VARCHAR(128) NOT NULL,
-	nickname    VARCHAR(32)  NOT NULL,
-	permissions_integer BIGINT NOT NULL,
+	server_uuid         VARCHAR(128) NOT NULL,
+	nickname            VARCHAR(32)  NOT NULL,
+	permissions_integer BIGINT       NOT NULL,
 
 	PRIMARY KEY (server_uuid, nickname, permissions_integer),
 	FOREIGN KEY (server_uuid) REFERENCES Server (server_uuid),

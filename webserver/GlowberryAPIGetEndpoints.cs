@@ -1,4 +1,4 @@
-﻿namespace glowberry.web.server
+﻿namespace glowberry.webserver
 {
     /// <summary>
     /// This part of the GlowberryWebServer class is responsible for registering all of the GET
