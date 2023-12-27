@@ -1,0 +1,58 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "880fba864f1714abdb83c92cd9df21ff",
+    "packages": [
+        {
+            "name": "mrkelpy/laminariacore-databases",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MrKelpy/PHP-LaminariaCore-Databases.git",
+                "reference": "1858a10b241397514defd7cfeb6cb36ac7322eac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MrKelpy/PHP-LaminariaCore-Databases/zipball/1858a10b241397514defd7cfeb6cb36ac7322eac",
+                "reference": "1858a10b241397514defd7cfeb6cb36ac7322eac",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mysqli": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LaminariaCore\\": "src/mysql/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MrKelpy"
+                }
+            ],
+            "description": "A utility library for connecting and managing databases in PHP",
+            "support": {
+                "issues": "https://github.com/MrKelpy/PHP-LaminariaCore-Databases/issues",
+                "source": "https://github.com/MrKelpy/PHP-LaminariaCore-Databases/tree/v1.0.1"
+            },
+            "time": "2023-11-28T22:59:38+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.6.0"
+}

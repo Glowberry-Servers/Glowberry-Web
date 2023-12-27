@@ -13,16 +13,29 @@ if not exist gbhelper.exe (
    exit /b
 )
 
+:: Check if the php cgi exists
+if not exist .\nginx\php\php-cgi.exe (
+   echo Could not find 'php-cgi.exe'. Please verify the file integrity and make sure that everything is in order.
+   exit /b
+)
+
 :: Check if --noconsole argument is passed
 if "%~1"=="--noconsole" (
   :: Start glowberry-webserver.exe without console
-  start /b "" glowberry-webserver.exe
+  start /B "" glowberry-webserver.exe
 ) else (
   :: Start glowberry-webserver.exe normally
-  start "" glowberry-webserver.exe
+  start /B "" glowberry-webserver.exe
 )
 
 :: Open google.com in the browser
-start "" https://google.com
+tasklist /fi "ImageName eq nginx.exe" /fo csv 2>NUL | find /I "nginx.exe">NUL
+if not "%ERRORLEVEL%"=="0" (
+	start /B "" php-fcgi.bat
+	
+	pushd .\nginx
+	start /B "" .\nginx.exe
+
+)
 
 endlocal
