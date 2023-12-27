@@ -45,11 +45,17 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Content Include="php-fcgi.bat">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <InProject>false</InProject>
+        </Content>
         <Content Include="..\Glowberry-Helper\bin\Release\gbhelper.exe">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <InProject>false</InProject>
         </Content>
         <Content Include="..\Glowberry-Console\bin\Release\glowberry.exe">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <InProject>false</InProject>
         </Content>
         <Content Include="startup.bat">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -69,7 +75,11 @@
         <PackageReference Include="Open.Nat" Version="2.1.0" />
     </ItemGroup>
     <ItemGroup>
-      <WebAppSourceFiles Include="web\app\**\*.*" />
+        <WebAppSourceFiles Include="web\app\**\*.*" />
+        <NginxServerFiles Include="nginx\**\*.*">
+            <InProject>false</InProject>
+        </NginxServerFiles>
+        <ScriptFiles Include="scripts\**\*.*" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="web\app" />
@@ -77,6 +87,8 @@
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
         <Copy SourceFiles="@(WebAppSourceFiles)" DestinationFolder="$(OutputPath)webapp" SkipUnchangedFiles="true" />
+        <Copy SourceFiles="@(ScriptFiles)" DestinationFolder="$(OutputPath)scripts" SkipUnchangedFiles="true" />
+        <Copy SourceFiles="@(NginxServerFiles)" DestinationFolder="$(OutputPath)\nginx\%(RecursiveDir)" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
     </Target>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.

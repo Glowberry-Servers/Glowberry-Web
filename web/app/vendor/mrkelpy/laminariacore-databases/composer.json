@@ -1,0 +1,21 @@
+{
+    "name": "mrkelpy/laminariacore-databases",
+    "description": "A utility library for connecting and managing databases in PHP",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "MrKelpy"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "ext-mysqli": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaminariaCore\\": "src/mysql/"
+        }
+    }
+
+}
