@@ -79,16 +79,19 @@
         <NginxServerFiles Include="nginx\**\*.*">
             <InProject>false</InProject>
         </NginxServerFiles>
-        <ScriptFiles Include="scripts\**\*.*" />
+        <ScriptFiles Include="scripts\**\*.sql" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="web\app" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
-        <Copy SourceFiles="@(WebAppSourceFiles)" DestinationFolder="$(OutputPath)webapp" SkipUnchangedFiles="true" />
+        <Copy SourceFiles="@(WebAppSourceFiles)" DestinationFolder="$(OutputPath)webapp\%(RecursiveDir)" SkipUnchangedFiles="true" />
         <Copy SourceFiles="@(ScriptFiles)" DestinationFolder="$(OutputPath)scripts" SkipUnchangedFiles="true" />
-        <Copy SourceFiles="@(NginxServerFiles)" DestinationFolder="$(OutputPath)\nginx\%(RecursiveDir)" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
+        <Copy SourceFiles="@(NginxServerFiles)" DestinationFolder="$(OutputPath)nginx\%(RecursiveDir)" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" Retries="3" RetryDelayMilliseconds="300" />
+    </Target>
+    <Target Name="CreateTempDirectory" AfterTargets="AfterBuild">
+        <MakeDir Directories="$(OutputPath)nginx\temp" Condition="!Exists('$(OutputPath)nginx\temp')" />
     </Target>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.

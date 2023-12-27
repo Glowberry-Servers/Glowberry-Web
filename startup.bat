@@ -32,9 +32,7 @@ if "%~1"=="--noconsole" (
 tasklist /fi "ImageName eq nginx.exe" /fo csv 2>NUL | find /I "nginx.exe">NUL
 if not "%ERRORLEVEL%"=="0" (
 	start /B "" php-fcgi.bat
-	
-	pushd .\nginx
-	start /B "" .\nginx.exe
+	start /B /D ".\nginx" .\nginx.exe
 
 )
 
