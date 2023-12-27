@@ -1,13 +1,13 @@
-﻿ using System;
- using System.Collections.Generic;
- using System.Linq;
- using System.Net;
- using System.Reflection;
- using glowberry.attributes;
- using glowberry.common;
- using glowberry.web.server.extensions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Reflection;
+using glowberry.common;
+using glowberry.attributes;
+using glowberry.webserver.extensions;
 
- namespace glowberry.web.server
+namespace glowberry.webserver
 {
     /// <summary>
     /// This singleton class is responsible for handling all web requests by managing an http listener.
