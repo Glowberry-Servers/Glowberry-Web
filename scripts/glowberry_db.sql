@@ -94,10 +94,7 @@ INSERT INTO User VALUES ('admin', 'admin', NULL, NOW(), NULL, 'Administrator', -
 CREATE TABLE Server
 (
 	server_uuid VARCHAR(128) NOT NULL,
-
 	name        VARCHAR(32) NOT NULL,
-	type        VARCHAR(32) NOT NULL,
-	version     VARCHAR(10) NOT NULL,
 
 	PRIMARY KEY (server_uuid)
 );
@@ -107,22 +104,11 @@ CREATE TABLE ServerUser
 (
 	server_uuid VARCHAR(128) NOT NULL,
 	nickname    VARCHAR(32)  NOT NULL,
-
-	PRIMARY KEY (server_uuid, nickname),
-	FOREIGN KEY (server_uuid) REFERENCES Server (server_uuid),
-	FOREIGN KEY (nickname) REFERENCES User (nickname)
-);
-
-# And, since a user can have multiple permissions for a server, we need a mapping table to map permissions
-# to ServerUsers.
-CREATE TABLE ServerUserPermission
-(
-	server_uuid         VARCHAR(128) NOT NULL,
-	nickname            VARCHAR(32)  NOT NULL,
-	permissions_integer BIGINT       NOT NULL,
+	permissions_integer BIGINT NOT NULL,
 
 	PRIMARY KEY (server_uuid, nickname, permissions_integer),
-	FOREIGN KEY (server_uuid, nickname) REFERENCES ServerUser (server_uuid, nickname)
+	FOREIGN KEY (server_uuid) REFERENCES Server (server_uuid),
+	FOREIGN KEY (nickname) REFERENCES User (nickname)
 );
 
 
