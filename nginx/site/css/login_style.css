@@ -82,7 +82,7 @@ body {
     text-decoration: underline;
 }
 
-.wrapper .extras .error {
+.wrapper .extras.error {
     color: #c9341a;
     font-size: 12px;
     padding-left: 22px;

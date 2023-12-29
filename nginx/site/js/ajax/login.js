@@ -21,7 +21,7 @@ function handleLoginFormSubmission() {
             let json = JSON.parse(ajax.responseText);
 
             // If the login was successful, redirect to the dashboard, if not, display the error message
-            if (json.success) window.location.href = "php/app/dashboard.php";
+            if (json.success) window.location.href = "../../php/app/dashboard.php";
             else errorMessageDiv.innerText = json.error;
         }
     };

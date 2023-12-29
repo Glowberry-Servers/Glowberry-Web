@@ -1,35 +1,26 @@
 <?php
-	
-	include "../../vendor/autoload.php";
-	
+	require __DIR__ . "/../vendor/autoload.php";
+
 	use LaminariaCore\MySQLDatabaseManager;
 	use LaminariaCore\MySQLServerConnector;
-	
-	/**
-	 * Gets the path to the source directory.
-	 * @return string The path to the source directory.
-	 */
-	function getSourcePath() : string {
-		return dirname(__DIR__);
-	}
-	
-	/**
-	 * Gets the connection to the MySQL server using the config file.
-	 * @return MySQLDatabaseManager The MySQLDatabaseManager object used to interact with the database.
-	 */
+
+/**
+ * Gets the connection to the MySQL server using the config file.
+ * @return MySQLDatabaseManager The MySQLDatabaseManager object used to interact with the database.
+ */
 	function getManagerFromConfig() : MySQLDatabaseManager {
-		
-		$mysql_config_path = getSourcePath() . '/mysql_config.json';
-		$mysql_script_path = getSourcePath() . '/sql/glowberry_db.sql';
-		
+
+        $mysql_config_path = __DIR__ . "/../mysql_config.json";
+        $sql_script_path = __DIR__ . "/../sql/glowberry_db.sql";
+
 		$mysql_config = json_decode(file_get_contents($mysql_config_path), true);
-		$server = $mysql_config['server'];
+		$server = $mysql_config['host'];
 		$database = $mysql_config['database'];
-		$username = $mysql_config['username'];
+		$username = $mysql_config['user'];
 		$password = $mysql_config['password'];
-		$connector = MySQLServerConnector::makeWithAuth($server, $database, $username, $password);
-		
-		return getManagerAfterChecks($connector, $database, $mysql_script_path);
+		$connector = MySQLServerConnector::makeWithAuth($server, "", $username, $password);
+
+		return getManagerAfterChecks($connector, $database, $sql_script_path);
 	}
 	
 	/**
@@ -55,8 +46,8 @@
 		
 		$manager = new MySQLDatabaseManager($connector);
 		
-		if ( !$database_exists )
-			$manager->runMySQLScript(file_get_contents($mysql_script_path));
-		
+		if ( !$database_exists ) $manager->runMySQLScript($mysql_script_path);
+
+        $manager->useDatabase($database);
 		return $manager;
 	}

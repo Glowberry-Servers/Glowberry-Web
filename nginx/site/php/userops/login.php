@@ -5,8 +5,8 @@
 		exit();
 	}
 	
-	include '../../../vendor/autoload.php';
-	include '../database_utils.php';
+	require __DIR__ . '/../../vendor/autoload.php';
+	include __DIR__ . '/../database_utils.php';
 	
 	// Gets the database manager that will be used to interact with the database.
 	$manager = getManagerFromConfig();
@@ -16,7 +16,7 @@
 	$password = $_POST['password'];
 	
 	// Checks the username and hashed password against the database.
-	$results = $manager->selectWithCondition(array('username'), "User", "username = '$username'");
+	$results = $manager->selectWithCondition(array('nickname'), "User", "nickname = '$username'");
 	
 	// If there are no results, the username and password are incorrect.
 	if (count($results) == 0 || !password_verify($password, $results[0]['password'])) {

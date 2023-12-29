@@ -67,10 +67,10 @@
 			
 			// Creates the sanitised query string and determines the fields to insert into.
 			$placeholders = str_split(str_repeat("?, ", count($fields)));
-			$fields = count($fields) != 0 ? $this->arrayToQueryString($fields) : "";
+			$fields = count($fields) != 0 ? '('. $this->arrayToQueryString($fields) .')' : "";
 			
 			
-			$query = "INSERT INTO $table " . $fields . " VALUES " . $this->arrayToQueryString($placeholders);
+			$query = "INSERT INTO $table " . $fields . " VALUES " . '('. $this->arrayToQueryString($placeholders) . ')';
 			$this->bindParameters($query, $values)->execute();
 		}
 		
@@ -202,6 +202,9 @@
 			// Parse the results into a matrix and return it.
 			while ($row = $result->fetch_assoc())
 				$resultsMatrix[] = $row;
+
+            // After everything is run, wait for mysqli to be ready for more
+            while (mysqli_next_result($this->getConnection())) {}
 			
 			return $resultsMatrix;
 		}
@@ -213,6 +216,10 @@
 		 */
 		public function sendNonQuery(string $statement): int {
 			$this->getConnection()->query($statement);
+
+            // After everything is run, wait for mysqli to be ready for more
+            while (mysqli_next_result($this->getConnection())) {}
+
 			return $this->getConnection()->affected_rows;
 		}
 		
@@ -224,6 +231,9 @@
 		public function runMySQLScript(string $path): void {
 			$commands = file_get_contents($path);
 			$this->getConnection()->multi_query($commands);
+
+            // After everything is run, wait for mysqli to be ready for more
+            while (mysqli_next_result($this->getConnection())) {}
 		}
 		
 		/**
@@ -240,7 +250,7 @@
 			$query = "";
 			foreach ($array as $item) $query .= $item . ", ";
 			
-			return '('. substr($query, 0, strlen($query) - 2) .')';
+			return substr($query, 0, strlen($query) - 2);
 		}
 		
 		/**
