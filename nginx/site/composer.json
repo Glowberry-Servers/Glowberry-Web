@@ -1,5 +1,6 @@
 {
   "require": {
-    "mrkelpy/laminariacore-databases": "*"
+    "mrkelpy/laminariacore-databases": "*",
+    "ext-mysqli": "*"
   }
 }

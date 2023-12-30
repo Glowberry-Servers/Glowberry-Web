@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "880fba864f1714abdb83c92cd9df21ff",
+    "content-hash": "c7e2fb38f4cb3024a0c52b09849d5307",
     "packages": [
         {
             "name": "mrkelpy/laminariacore-databases",
@@ -52,7 +52,10 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-json": "*",
+        "ext-mysqli": "*"
+    },
     "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }

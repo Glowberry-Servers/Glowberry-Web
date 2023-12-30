@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="8bb6cf55-d13d-4643-9cd2-32f556936ec1" name="NGINX" url="http://localhost:34557">
+        <fileTransfer mountedRoot="C:\dev\CSharp\Glowberry\Glowberry-Web\bin\Debug\nginx\site" accessType="MOUNT" port="0" />
+      </webServer>
+    </option>
+  </component>
+</project>
