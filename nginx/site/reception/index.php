@@ -11,5 +11,5 @@
     }
 
     // If the user is logged in, redirect them to the dashboard directly.
-    header("Location: /app/php/dashboard.php");
+    header("Location: /app/php/web/dashboard.php");
     exit();

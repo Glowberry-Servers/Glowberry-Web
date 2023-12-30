@@ -37,5 +37,5 @@
     $cookie_lifetime = $persistent ? time() + (86400 * 3) : 0;
     setcookie("session_id", $session_id, $cookie_lifetime, "/");
     
-    echo json_encode(array('success' => "Logged in successfully.", 'method' => 'POST', 'href' => "/app/php/dashboard.php"));
+    echo json_encode(array('success' => "Logged in successfully.", 'method' => 'POST', 'href' => "/app/php/web/dashboard.php"));
     exit();
