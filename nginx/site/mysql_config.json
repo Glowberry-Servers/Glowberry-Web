@@ -1,6 +1,6 @@
 {
-	"user": "root",
-	"password": "",
-	"host": "localhost",
-	"database": "glowberry"
+  "user": "root",
+  "password": "",
+  "host": "localhost",
+  "database": "glowberry"
 }

@@ -5,23 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02d0671a-156d-4b26-846f-65f4af9d69a0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/reception/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/site.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/site.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/js/page_utils.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/php/app/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/php/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/dashboard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/php/database_utils.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/database_utils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/php/session_handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/session_handler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/sql/glowberry_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/sql/glowberry_db.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/mysql_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reception/css/login_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/reception/css/login_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reception/forgot-password.html" beforeDir="false" afterPath="$PROJECT_DIR$/reception/forgot-password.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reception/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/reception/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reception/js/userops.js" beforeDir="false" afterPath="$PROJECT_DIR$/reception/js/userops.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reception/php/userops/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/reception/php/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reception/php/userops/password_recovery.php" beforeDir="false" afterPath="$PROJECT_DIR$/reception/php/password_recovery.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reception/php/userops/security_code.php" beforeDir="false" afterPath="$PROJECT_DIR$/reception/php/security_code.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reception/php/userops/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/reception/php/signup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reception/php/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/reception/php/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reception/php/password_recovery.php" beforeDir="false" afterPath="$PROJECT_DIR$/reception/php/password_recovery.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reception/php/security_code.php" beforeDir="false" afterPath="$PROJECT_DIR$/reception/php/security_code.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reception/php/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/reception/php/signup.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reception/welcome.html" beforeDir="false" afterPath="$PROJECT_DIR$/reception/welcome.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/mrkelpy/laminariacore-databases/src/mysql/MySQLDatabaseManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/mrkelpy/laminariacore-databases/src/mysql/MySQLDatabaseManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../scripts/.idea/scripts.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../scripts/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../scripts/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../startup.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../../startup.bat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,9 +38,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="package.json" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -86,25 +86,28 @@
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
     "JavaScript Debug.forgot-password.html.executor": "Debug",
-    "JavaScript Debug.index.php.executor": "Run",
+    "JavaScript Debug.index.php.executor": "Debug",
     "JavaScript Debug.security_code.php.executor": "Debug",
     "JavaScript Debug.welcome.executor": "Debug",
     "JavaScript Debug.welcome.html (1).executor": "Debug",
     "JavaScript Debug.welcome.html.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/dev/CSharp/Glowberry/Glowberry-Web/webdev_startup.bat",
+    "last_opened_file_path": "C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php.debug",
+    "settings.editor.selected.configurable": "preferences.sourceCode.PHP",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\dev\CSharp\Glowberry\Glowberry-Web\nginx\site\app\php" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\dev\CSharp\Glowberry\Glowberry-Web\nginx\site\app\php" />
       <recent name="C:\dev\CSharp\Glowberry\Glowberry-Web\nginx\site\reception\php" />
@@ -148,11 +151,24 @@
       <workItem from="1703895252676" duration="2089000" />
       <workItem from="1703897371493" duration="53000" />
       <workItem from="1703897448655" duration="17011000" />
+      <workItem from="1703952383884" duration="3400000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/reception/js/userops.js</url>
+          <line>18</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

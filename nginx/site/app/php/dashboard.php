@@ -1,17 +1,25 @@
 <?php
     require $_SERVER["DOCUMENT_ROOT"] . '/vendor/autoload.php';
-    include $_SERVER["DOCUMENT_ROOT"] . '/app/php/database_utils.php';
-    include $_SERVER["DOCUMENT_ROOT"] . '/app/php/session_handler.php';
-
-    // If the user is not logged in, redirect them to the welcome page.
-    if (!isset($_COOKIE['session_id']) || !sessionCheck(getManagerFromConfig(), $_COOKIE['session_id'])) {
-        header("Location: /reception/welcome.html");
-        exit();
-    }
-
+    include_once $_SERVER["DOCUMENT_ROOT"] . '/app/php/session_handler.php';
+    include_once $_SERVER["DOCUMENT_ROOT"] . '/app/php/session_header.php';
+    
     $session_id = $_COOKIE['session_id'];
-    $user_info = getUserInfoFromSession(getManagerFromConfig(), $session_id);
+    $user = getUserInfoFromSession(getManagerFromConfig(), $session_id);
+?>
 
-    echo 'Logged in as '.$user_info['nickname'];
-    echo '<br>';
-    echo 'Session ID: '.$session_id;
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Glowberry</title>
+
+    <!-- Sets the favicon from glowberry's assets -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+</body>
+</html>

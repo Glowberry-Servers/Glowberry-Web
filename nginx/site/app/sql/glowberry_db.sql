@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
 
 # Creates the Glowberry database if it doesn't exist
 DROP DATABASE IF EXISTS Glowberry;
@@ -19,7 +19,8 @@ CREATE TABLE WebAppPermission
 INSERT INTO WebAppPermission VALUES
 ('No Permissions', 'Allows the user to do nothing, and overrides all other permissions.', 0),
 ('All Permissions', 'Allows the user to do everything.', 1),
-('Manage User', 'Allows the user to edit other users\' profiles.', 2),
+('Manage User', 'Allows the user to edit other users
+\' profiles.', 2),
 ('Manage Roles', 'Allows the user to edit, create and give other users roles as high as their own.', 4),
 ('Allocate Resources', 'Allows the user to change the amount of resources allocated to other users.', 8),
 ('Reset Passwords', 'Allows the user to reset the passwords of other users, receiving the one-time usage code created.', 16),
@@ -33,17 +34,17 @@ INSERT INTO WebAppPermission VALUES
 ('Restart Servers', 'Allows the user to restart servers in place of other users.', 2048),
 ('Kill Servers', 'Allows the user to kill servers in place of other users.', 4096);
 
-# Creates the server permissions table
+#Creates the server permissions table
 CREATE TABLE ServerPermission
 (
-	permission_name        VARCHAR(32) NOT NULL,
-	permission_description TEXT,
-	permissions_integer    BIGINT      NOT NULL,
+    permission_name        VARCHAR(32) NOT NULL,
+    permission_description TEXT,
+    permissions_integer    BIGINT      NOT NULL,
 
-	PRIMARY KEY (permission_name)
+    PRIMARY KEY (permission_name)
 );
 
-# Fills up the server permissions table with the administrative permissions for the servers.
+#Fills up the server permissions table with the administrative permissions for the servers.
 INSERT INTO ServerPermission VALUES
 ('No Permissions', 'Allows the user to do nothing, and overrides all other permissions.', 0),
 ('All Permissions', 'Allows the user to do everything.', 1),
@@ -77,6 +78,7 @@ CREATE TABLE User
 	display_name    VARCHAR(32) NOT NULL,
 
 	profile_picture TEXT,
+	wallpaper       TEXT,
 	joined_date     DATETIME    NOT NULL,
 	about_me        TEXT,
 	role_name       VARCHAR(32) NOT NULL,
@@ -89,7 +91,7 @@ CREATE TABLE User
 );
 
 # Adds the administrator user to the database
-INSERT INTO User VALUES ('admin', '$2y$10$vLqvYPi1vtsseYk8lCr3x.oaFkkdgG7NU423VzujZqXgA0VDl2tmi', 'Administration', NULL, NOW(), NULL, 'Administrator', -1, NULL);
+INSERT INTO User VALUES ('admin', '$2y$10$vLqvYPi1vtsseYk8lCr3x.oaFkkdgG7NU423VzujZqXgA0VDl2tmi', 'Administration', NULL, NULL, NOW(), NULL, 'Administrator', -1, NULL);
 
 # Creates the servers table
 CREATE TABLE Server

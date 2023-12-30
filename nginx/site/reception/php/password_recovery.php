@@ -1,11 +1,11 @@
 <?php
 
     // Checks if the method is POST.
-    if ( $_SERVER['REQUEST_METHOD'] != 'POST' ) {
+    if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         http_response_code(405);
         exit();
     }
-
+    
     require $_SERVER["DOCUMENT_ROOT"] . '/vendor/autoload.php';
     include $_SERVER["DOCUMENT_ROOT"] . '/app/php/database_utils.php';
 
@@ -18,7 +18,7 @@
 
     // Checks if the security code is valid.
     $results = $manager->selectWithCondition(array('nickname'), "User", "security_code = '$security_code'");
-
+    
     if (count($results) == 0) {
         http_response_code(200);
         echo json_encode(array('error' => "Invalid security code.", 'element-name' => "security-code-error"));
@@ -26,7 +26,7 @@
     }
 
     // Checks if the password is at least 6 characters long, and contains at least one number.
-    if (strlen($password) < 6 ||  !preg_match('/[0-9]/', $password)) {
+    if (strlen($password) < 6 || !preg_match('/[0-9]/', $password)) {
         http_response_code(200);
         echo json_encode(array('error' => "The password must be at least 6 characters long, and have at least one number.", 'element-name' => "new-password-error"));
         exit();
@@ -35,7 +35,7 @@
     // If the security code is valid, the password is updated.
     $password_hash = password_hash($password, PASSWORD_DEFAULT, ['cost' => 10]);
     $manager->update("User", "password", $password_hash, "security_code = '$security_code'");
-
+    
     http_response_code(200);
     echo json_encode(array('success' => "Password updated successfully.", 'method' => 'GET', 'href' => "/reception/welcome"));
     exit();
