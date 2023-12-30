@@ -88,7 +88,7 @@ CREATE TABLE User
 );
 
 # Adds the administrator user to the database
-INSERT INTO User VALUES ('admin', 'admin', NULL, NOW(), NULL, 'Administrator', -1, NULL);
+INSERT INTO User VALUES ('admin', '$2y$10$vLqvYPi1vtsseYk8lCr3x.oaFkkdgG7NU423VzujZqXgA0VDl2tmi', NULL, NOW(), NULL, 'Administrator', -1, NULL);
 
 # Creates the servers table
 CREATE TABLE Server

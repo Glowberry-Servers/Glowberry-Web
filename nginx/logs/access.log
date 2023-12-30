@@ -593,3 +593,6 @@
 127.0.0.1 - - [29/Dec/2023:01:29:31 +0000] "GET /login HTTP/1.1" 200 2159 "-" "IntelliJ IDEA/232.10072.27"
 127.0.0.1 - - [29/Dec/2023:01:30:54 +0000] "GET /login HTTP/1.1" 200 2159 "-" "IntelliJ IDEA/232.10072.27"
 127.0.0.1 - - [29/Dec/2023:05:43:32 +0000] "GET /welcome? HTTP/1.1" 200 2157 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Gecko/20100101 Firefox/121.0"
+127.0.0.1 - - [30/Dec/2023:00:23:46 +0000] "GET /reception/welcome?.html HTTP/1.1" 200 2149 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+127.0.0.1 - - [30/Dec/2023:00:23:46 +0000] "POST /reception/reception/php/userops/password_recovery.php HTTP/1.1" 404 36 "http://localhost:34557/reception/forgot-password.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+127.0.0.1 - - [30/Dec/2023:00:23:46 +0000] "GET /reception/js/userops.js HTTP/1.1" 200 4990 "http://localhost:34557/reception/welcome?.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"

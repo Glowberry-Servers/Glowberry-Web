@@ -1,5 +1,5 @@
 <?php
-	require __DIR__ . "/../vendor/autoload.php";
+	require $_SERVER["DOCUMENT_ROOT"] . "/vendor/autoload.php";
 
 	use LaminariaCore\MySQLDatabaseManager;
 	use LaminariaCore\MySQLServerConnector;
@@ -10,8 +10,8 @@
  */
 	function getManagerFromConfig() : MySQLDatabaseManager {
 
-        $mysql_config_path = __DIR__ . "/../mysql_config.json";
-        $sql_script_path = __DIR__ . "/../sql/glowberry_db.sql";
+        $mysql_config_path = $_SERVER["DOCUMENT_ROOT"] . "/mysql_config.json";
+        $sql_script_path = $_SERVER["DOCUMENT_ROOT"] . "/app/sql/glowberry_db.sql";
 
 		$mysql_config = json_decode(file_get_contents($mysql_config_path), true);
 		$server = $mysql_config['host'];
