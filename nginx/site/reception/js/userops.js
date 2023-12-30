@@ -1,3 +1,11 @@
+
+/**
+ * Takes the user back to the login/register page
+ */
+function returnToWelcome() {
+    window.location.href = "/reception/welcome.html";
+}
+
 /**
  * Handles the entire login form submission process, from the data submission to the response handling
  * @returns false - Stops the program from submitting the form normally
@@ -7,14 +15,14 @@ function handleLoginFormSubmission() {
     // Get the data submitted in the form
     let username = document.getElementById("login-username").value;
     let password = document.getElementById("login-password").value;
-    let errorMessageDiv = document.getElementById("login-error");
+    let persistent = document.getElementById("remember-me").checked;
 
     // Create an ajax request instance for the login form and handle the response in the standard way
-    let ajax = createAjaxRequestFor("/reception/php/userops/login.php");
-    ajax.onreadystatechange = function() { generalFormReadyStateHandler(ajax) };
+    let ajax = createAjaxRequestFor("/reception/php/login.php");
+    ajax.onreadystatechange = function() { generaOnReadyStateHandler(ajax) };
 
     // Send the request with the form data
-    ajax.send("username=" + username + "&password=" + password);
+    ajax.send("username=" + username + "&password=" + password + "&persistent=" + persistent);
 
     // Prevent the form from submitting normally
     return false;
@@ -32,8 +40,8 @@ function handleSignupFormSubmission() {
     let confirm = document.getElementById("signup-confirm").value;
 
     // Create an ajax request instance for the signup form and handle the response in the standard way
-    let ajax = createAjaxRequestFor("/reception/php/userops/signup.php");
-    ajax.onreadystatechange = function() { generalFormReadyStateHandler(ajax) };
+    let ajax = createAjaxRequestFor("/reception/php/signup.php");
+    ajax.onreadystatechange = function() { generaOnReadyStateHandler(ajax) };
 
     // Send the request with the form data
     ajax.send("username=" + username + "&password=" + password + "&confirm_password=" + confirm);
@@ -53,8 +61,8 @@ function handleRecoveryFormSubmission() {
     let new_password = document.getElementById("new-password").value;
 
     // Create an ajax request instance for the recovery form and handle the response in the standard way
-    let ajax = createAjaxRequestFor("/reception/php/userops/password_recovery.php");
-    ajax.onreadystatechange = function() { generalFormReadyStateHandler(ajax) };
+    let ajax = createAjaxRequestFor("/reception/php/password_recovery.php");
+    ajax.onreadystatechange = function() { generaOnReadyStateHandler(ajax) };
 
     // Send the request with the form data
     ajax.send("security_code=" + code + "&new_password=" + new_password);
@@ -82,7 +90,7 @@ function createAjaxRequestFor(page) {
  *
  * @param ajax The AJAX request object to use
  */
-function generalFormReadyStateHandler(ajax) {
+function generaOnReadyStateHandler(ajax) {
 
     if (ajax.readyState === 4 && ajax.status === 200) {
 

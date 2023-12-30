@@ -36,9 +36,9 @@ INSERT INTO WebAppPermission VALUES
 # Creates the server permissions table
 CREATE TABLE ServerPermission
 (
-	permission_name     VARCHAR(32) NOT NULL,
+	permission_name        VARCHAR(32) NOT NULL,
 	permission_description TEXT,
-	permissions_integer BIGINT      NOT NULL,
+	permissions_integer    BIGINT      NOT NULL,
 
 	PRIMARY KEY (permission_name)
 );
@@ -73,7 +73,8 @@ INSERT INTO Role VALUES
 CREATE TABLE User
 (
 	nickname        VARCHAR(32) NOT NULL,
-	password        TEXT        NOT NULL,
+	password        VARCHAR(64) NOT NULL,
+	display_name    VARCHAR(32) NOT NULL,
 
 	profile_picture TEXT,
 	joined_date     DATETIME    NOT NULL,
@@ -88,7 +89,7 @@ CREATE TABLE User
 );
 
 # Adds the administrator user to the database
-INSERT INTO User VALUES ('admin', '$2y$10$vLqvYPi1vtsseYk8lCr3x.oaFkkdgG7NU423VzujZqXgA0VDl2tmi', NULL, NOW(), NULL, 'Administrator', -1, NULL);
+INSERT INTO User VALUES ('admin', '$2y$10$vLqvYPi1vtsseYk8lCr3x.oaFkkdgG7NU423VzujZqXgA0VDl2tmi', 'Administration', NULL, NOW(), NULL, 'Administrator', -1, NULL);
 
 # Creates the servers table
 CREATE TABLE Server
@@ -108,6 +109,18 @@ CREATE TABLE ServerUser
 
 	PRIMARY KEY (server_uuid, nickname, permissions_integer),
 	FOREIGN KEY (server_uuid) REFERENCES Server (server_uuid),
+	FOREIGN KEY (nickname) REFERENCES User (nickname)
+);
+
+# Creates the ApplicationSession table, which stores the session data for the web app.
+# This table is meant to work together with the cookies stored on the client side.
+CREATE TABLE ApplicationSession
+(
+	session_id VARCHAR(128) NOT NULL,
+	nickname   VARCHAR(32)  NOT NULL,
+	session_password   VARCHAR(64)  NOT NULL,
+
+	PRIMARY KEY (session_id),
 	FOREIGN KEY (nickname) REFERENCES User (nickname)
 );
 

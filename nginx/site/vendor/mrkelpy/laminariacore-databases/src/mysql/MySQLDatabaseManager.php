@@ -97,7 +97,7 @@
 		{
 			// Construct the DELETE query with the specified condition and execute it.
 			$query = "DELETE FROM $table WHERE $condition";
-			$this->sendQuery($query);
+			$this->sendNonQuery($query);
 		}
 		
 		/**

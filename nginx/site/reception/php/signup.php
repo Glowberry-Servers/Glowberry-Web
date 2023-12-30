@@ -10,9 +10,9 @@
 
     // Gets the database manager from the config file and the passed parameters from the POST request.
     $manager = getManagerFromConfig();
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $confirm = $_POST["confirm_password"];
+    $username = htmlentities($_POST["username"]);
+    $password = htmlentities($_POST["password"]);
+    $confirm = htmlentities($_POST["confirm_password"]);
 
     // Checks if the username is already taken.
     $results = $manager->selectWithCondition(array('nickname'), "User", "nickname = '$username'");
@@ -69,14 +69,8 @@
     }
     while (count($existence_check) != 0);
 
-    $manager->insertWhole("User", array($username, $hashed_password, NULL, date('Y-m-d H:i:s'), NULL, "User", 5120, $security_code));
+    $manager->insertWhole("User", array($username, $hashed_password, $username, NULL, date('Y-m-d H:i:s'), NULL, "User", 5120, $security_code));
 
     http_response_code(200);
-    echo json_encode(array('success' => "Signed up successfully.", 'method' => 'POST', 'href' => "/reception/php/userops/security_code.php", 'security_code' => $security_code));
+    echo json_encode(array('success' => "Signed up successfully.", 'method' => 'POST', 'href' => "/reception/php/security_code.php", 'security_code' => $security_code));
     exit();
-
-
-
-
-
-

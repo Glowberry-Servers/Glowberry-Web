@@ -1,5 +1,6 @@
 <?php
 
+// Refuses to load if the method is not a POST request with the security code.
 if (!isset($_POST["security_code"])) {
     http_response_code(500);
     exit();
@@ -15,6 +16,7 @@ if (!isset($_POST["security_code"])) {
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="/reception/css/security_code.css">
+    <script src="/reception/js/userops.js"></script>
 </head>
 <body>
 
@@ -36,8 +38,9 @@ if (!isset($_POST["security_code"])) {
             <p style="margin-top: 10px; margin-bottom: 10px; color: darkgrey"> Don't share this code with anyone.</p>
         </div>
 
-        <button id="next" onclick="window.location.href = '/dashboard.php'">I've saved my security code, let's continue.</button>
+        <button id="next" onclick=returnToWelcome()>I've saved my security code, let's log in.</button>
         <p class="content once-notice" style="font-weight: 500">*This will only be shown once.</p>
     </div>
+
 </body>
 </html>

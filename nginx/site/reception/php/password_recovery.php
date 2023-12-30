@@ -13,8 +13,8 @@
     $manager = getManagerFromConfig();
 
     // Gets the security code and the new password from the POST request.
-    $security_code = $_POST["security_code"];
-    $password = $_POST["new_password"];
+    $security_code = htmlentities($_POST["security_code"]);
+    $password = htmlentities($_POST["new_password"]);
 
     // Checks if the security code is valid.
     $results = $manager->selectWithCondition(array('nickname'), "User", "security_code = '$security_code'");

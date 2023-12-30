@@ -1,13 +1,13 @@
 <?php
-	require $_SERVER["DOCUMENT_ROOT"] . "/vendor/autoload.php";
+	require_once $_SERVER["DOCUMENT_ROOT"] . "/vendor/autoload.php";
 
 	use LaminariaCore\MySQLDatabaseManager;
 	use LaminariaCore\MySQLServerConnector;
 
-/**
- * Gets the connection to the MySQL server using the config file.
- * @return MySQLDatabaseManager The MySQLDatabaseManager object used to interact with the database.
- */
+    /**
+    * Gets the connection to the MySQL server using the config file.
+    * @return MySQLDatabaseManager The MySQLDatabaseManager object used to interact with the database.
+    */
 	function getManagerFromConfig() : MySQLDatabaseManager {
 
         $mysql_config_path = $_SERVER["DOCUMENT_ROOT"] . "/mysql_config.json";
@@ -22,8 +22,8 @@
 
 		return getManagerAfterChecks($connector, $database, $sql_script_path);
 	}
-	
-	/**
+
+    /**
 	 * Makes sure that the database exists by sending a dummy query to the server attempting
 	 * to create it if it doesn't exist. If it does, it runs the MySQL script to create the
 	 * tables.
