@@ -1,0 +1,98 @@
+@import url("pallette.css");
+
+body {
+    background: var(--primary);
+    display: flex;
+    flex-flow: column;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+
+.menu-header {
+    display: flex;
+    flex-flow: row;
+    flex: 0 1 auto;
+    width: 100%;
+    background: var(--header);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    color: var(--details);
+    z-index: 10;
+}
+
+.menu-header-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menu-header-left h1 {
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.menu-header-left #logo {
+    width: 45px;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    padding: 3px;
+    cursor: pointer;
+}
+
+#profile-picture {
+    border-radius: 20%;
+}
+
+.menu-header-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: 10px;
+    padding-right: 20px;
+}
+
+.menu-header-right p {
+    font-size: 15px;
+    padding: 10px;
+    text-align: center;
+    font-weight: 300;
+    margin-right: inherit;
+}
+
+.menu-header-right .bx {
+    display: flex;
+    flex-flow: column;
+    font-size: 25px;
+    text-align: center;
+    padding: 5px;
+    color: inherit;
+    margin-right: inherit;
+    cursor: pointer;
+}
+
+.menu-header-right .bx span {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.menu-header-right img {
+    width: 40px;
+    height: 40px;
+    margin-right: inherit;
+    cursor: pointer;
+}
+
+.vertical-divider#profile-divider {
+    height: 35px;
+}
+
+.vertical-divider#invisible {
+    border: none;
+    height: 60px;
+}
+

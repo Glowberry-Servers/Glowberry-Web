@@ -13,7 +13,7 @@
     $manager = getManagerFromConfig();
 
     // Gets the username and password from the POST request.
-    $username = htmlentities($_POST['username']);
+    $username = htmlentities(strtolower($_POST['username']));
     $password = htmlentities($_POST['password']);
     $persistent = filter_var($_POST['persistent'], FILTER_VALIDATE_BOOLEAN);
 
@@ -38,4 +38,6 @@
     setcookie("session_id", $session_id, $cookie_lifetime, "/");
     
     echo json_encode(array('success' => "Logged in successfully.", 'method' => 'POST', 'href' => "/app/php/web/dashboard.php"));
+    
+    $manager->getConnector()->close();
     exit();

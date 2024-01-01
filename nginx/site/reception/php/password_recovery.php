@@ -38,6 +38,8 @@
     
     http_response_code(200);
     echo json_encode(array('success' => "Password updated successfully.", 'method' => 'GET', 'href' => "/reception/welcome"));
+    
+    $manager->getConnector()->close();
     exit();
 
 

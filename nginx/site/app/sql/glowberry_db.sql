@@ -10,17 +10,14 @@ CREATE TABLE WebAppPermission
 (
 	permission_name        VARCHAR(32) NOT NULL,
 	permission_description TEXT,
-	permissions_integer    BIGINT      NOT NULL,
-
-	PRIMARY KEY (permissions_integer)
+	permissions_integer    BIGINT      NOT NULL
 );
 
 # Fills up the permissions table with the administrative permissions for the web app.
 INSERT INTO WebAppPermission VALUES
 ('No Permissions', 'Allows the user to do nothing, and overrides all other permissions.', 0),
-('All Permissions', 'Allows the user to do everything.', 1),
-('Manage User', 'Allows the user to edit other users
-\' profiles.', 2),
+('All Permissions', 'Allows the user to do everything.', -1),
+('Manage User', 'Allows the user to edit other users\' profiles.', 2),
 ('Manage Roles', 'Allows the user to edit, create and give other users roles as high as their own.', 4),
 ('Allocate Resources', 'Allows the user to change the amount of resources allocated to other users.', 8),
 ('Reset Passwords', 'Allows the user to reset the passwords of other users, receiving the one-time usage code created.', 16),
@@ -39,15 +36,13 @@ CREATE TABLE ServerPermission
 (
     permission_name        VARCHAR(32) NOT NULL,
     permission_description TEXT,
-    permissions_integer    BIGINT      NOT NULL,
-
-    PRIMARY KEY (permission_name)
+    permissions_integer    BIGINT      NOT NULL
 );
 
 #Fills up the server permissions table with the administrative permissions for the servers.
 INSERT INTO ServerPermission VALUES
 ('No Permissions', 'Allows the user to do nothing, and overrides all other permissions.', 0),
-('All Permissions', 'Allows the user to do everything.', 1),
+('All Permissions', 'Allows the user to do everything.', -1),
 ('Manage Server', 'Allows the user to access a server\'s files.', 2),
 ('Start Server', 'Allows the user to start a server.', 4),
 ('Stop Server', 'Allows the user to stop a server.', 8),
@@ -73,25 +68,25 @@ INSERT INTO Role VALUES
 # Creates the user table
 CREATE TABLE User
 (
-	nickname        VARCHAR(32) NOT NULL,
-	password        VARCHAR(64) NOT NULL,
-	display_name    VARCHAR(32) NOT NULL,
+	nickname                    VARCHAR(32) NOT NULL,
+	password                    VARCHAR(64) NOT NULL,
+	display_name                VARCHAR(32) NOT NULL,
 
-	profile_picture TEXT,
-	wallpaper       TEXT,
-	joined_date     DATETIME    NOT NULL,
-	about_me        TEXT,
-	role_name       VARCHAR(32) NOT NULL,
+	profile_picture             TEXT,
+	wallpaper                   TEXT,
+	joined_date                 DATETIME    NOT NULL,
+	role_name                   VARCHAR(32) NOT NULL,
 
-	max_ram         INT         NOT NULL,
-	security_code   TEXT,
+	max_ram                     INT         NOT NULL,
+	security_code               TEXT,
+	web_app_permissions_integer BIGINT      NOT NULL,
 
 	PRIMARY KEY (nickname),
 	FOREIGN KEY (role_name) REFERENCES Role (role_name)
 );
 
 # Adds the administrator user to the database
-INSERT INTO User VALUES ('admin', '$2y$10$vLqvYPi1vtsseYk8lCr3x.oaFkkdgG7NU423VzujZqXgA0VDl2tmi', 'Administration', NULL, NULL, NOW(), NULL, 'Administrator', -1, NULL);
+INSERT INTO User VALUES ('admin', '$2y$10$vLqvYPi1vtsseYk8lCr3x.oaFkkdgG7NU423VzujZqXgA0VDl2tmi', 'Administration', NULL, NULL, NOW(), 'Administrator', -1, NULL, -1);
 
 # Creates the servers table
 CREATE TABLE Server

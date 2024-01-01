@@ -21,26 +21,8 @@
             $servers[] = $result;
         }
         
+        $manager->getConnector()->close();
         return $servers;
-    }
-    
-    function dummyGetServersForUser(string $username) : array
-    {
-        $server = array();
-        $server['name'] = "GlowberryServer";
-        $server['server_id'] = $username. "-glowberryserver";
-        $server['icon'] = "https://raw.githubusercontent.com/Glowberry-Servers/Glowberry-Assets/master/main/logo.png";
-        $server['status-html'] = "<span style='color:green'>Online</span>";
-        $server['server-ip'] = "192.168.1.10:25565";
-        
-        $server2 = array();
-        $server2['name'] = "GlowberryServer 2";
-        $server2['server_id'] = $username. "-glowberryserver2";
-        $server2['icon'] = "https://raw.githubusercontent.com/Glowberry-Servers/Glowberry-Assets/master/main/logo.png";
-        $server2['status-html'] = "<span style='color:green'>Online</span>";
-        $server2['server-ip'] = "192.168.1.10:25565";
-        
-        return array($server, $server2);
     }
     
     /**
@@ -54,9 +36,9 @@
         $html = "";
         foreach ($servers as $server) {
             $html .= "
-<div class='server-card' style='width: 98.5%; margin: 10px; background-color: yellow; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);'>
+<div class='server-card' style='width: 98.5%; margin: 10px; background-color: #3e4d5b; color: #cfcfcf; box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);'>
     <div class='server-card-left' style='display: flex; align-items: center; padding: 10px; box-sizing: border-box;'>
-        <img src='" . $server['icon'] . "' alt='Server Icon' style='max-width: 60px; height: auto; margin-right: 15px;'>
+        <img src='" . $server['icon'] . "' alt='Server Icon' style='max-width: 70px; height: auto; margin-right: 15px;'>
         
         <div class='server-card-left-text' style='flex: 1;'>
             <h2 style='margin: 0; font-size: 1em;'>" . $server['name'] . "</h2>
@@ -65,22 +47,22 @@
         </div>
         
         <div class='server-card-right-buttons' style='display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;'>
-            <button id='". $server['server_id'] ."-start' class='server-card-right-button' style='padding: 8px; cursor: pointer; display: flex; align-items: center; justify-content: space-between;'>
+            <button id='". $server['server_id'] ."-start' class='server-card-right-button' style='padding: 8px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; border: none; background-color: #4caf50;'>
                 Start<i class='bx bx-play' style='margin-left: 5px; font-size: 1.5em;'></i>
             </button>
-            <button id='". $server['server_id'] ."-stop' class='server-card-right-button' style='padding: 8px; cursor: pointer; display: flex; align-items: center; justify-content: space-between;'>
+            <button id='". $server['server_id'] ."-stop' class='server-card-right-button' style='padding: 8px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; border: none; background-color: #ff7043;'>
                 Stop<i class='bx bx-stop' style='margin-left: 5px; font-size: 1.5em;'></i>
             </button>
-            <button id='". $server['server_id'] ."-restart' class='server-card-right-button' style='padding: 8px; cursor: pointer; display: flex; align-items: center; justify-content: space-between;'>
+            <button id='". $server['server_id'] ."-restart' class='server-card-right-button' style='padding: 8px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; border: none; background-color: #ffeb3b;'>
                 Restart<i class='bx bx-reset' style='margin-left: 5px; font-size: 1.5em;'></i>
             </button>
-            <button id='". $server['server_id'] ."-settings' class='server-card-right-button' style='padding: 8px; cursor: pointer; display: flex; align-items: center; justify-content: space-between;'>
-                Settings<i class='bx bx-dots-horizontal-rounded' style='margin-left: 5px; font-size: 1.5em;'></i>
+            <button id='". $server['server_id'] ."-settings' class='server-card-right-button' style='padding: 8px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; border: none; background-color: #adadad;'>
+                Manage<i class='bx bx-dots-horizontal-rounded' style='margin-left: 5px; font-size: 1.5em;'></i>
             </button>
-            <button id='". $server['server_id'] ."-console' class='server-card-right-button' style='padding: 8px; cursor: pointer; display: flex; align-items: center; justify-content: space-between;'>
+            <button id='". $server['server_id'] ."-console' class='server-card-right-button' style='padding: 8px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; border: none; background-color: #adadad;'>
                 Console<i class='bx bx-terminal' style='margin-left: 5px; font-size: 1.5em;'></i>
             </button>
-            <button id='". $server['server_id'] ."-kill' class='server-card-right-button' style='padding: 8px; cursor: pointer; display: flex; align-items: center; justify-content: space-between;'>
+            <button id='". $server['server_id'] ."-kill' class='server-card-right-button' style='padding: 8px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; border: none; background-color: #c7283a;'>
                 Kill<i class='bx bx-x' style='margin-left: 5px; font-size: 1.5em;'></i>
             </button>
         </div>

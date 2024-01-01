@@ -58,6 +58,7 @@
      */
     function createNewSession(MySQLDatabaseManager $manager, string $username, string $password): string
     {
+        $username = strtolower($username);
         
         // Deletes the user's current session if they have one.
         if (getCurrentSessionIdFor($manager, $username) != null) {
@@ -66,7 +67,7 @@
         
         // Creates a unique session id, checking if it is already in use to avoid that 0.0000001% chance of a collision.
         do {
-            $session_id = uniqid();
+            $session_id = generateSessionID(128);
             $results = $manager->selectWithCondition(array('session_id'), "ApplicationSession", "session_id = '$session_id'");
         } while (count($results) != 0);
         
@@ -74,6 +75,30 @@
         $manager->insertWhole("ApplicationSession", array($session_id, $username, $password));
         
         return $session_id;
+    }
+    
+    /**
+     * Creates a random session id with a given length.
+     * @param int $length The length of the session id.
+     *
+     * @return string
+     */
+    function generateSessionID(int $length) : string {
+        
+        $session_id = '';
+        
+        while (strlen($session_id) < $length) {
+            
+            // Generates a random character, either a number or a lowercase letter, appending it to the session id.
+            for ($i = 0; $i < 16; $i++)
+                $session_id .= rand(0, 1) ? rand(0, 9) : chr(rand(ord('a'), ord('z')));
+            
+            // Encodes the current session id in base64.
+            $session_id = base64_encode($session_id);
+        }
+        
+        // Trims the session id to the desired length, just in case it went over.
+        return substr($session_id, 0, $length);
     }
     
     /**
