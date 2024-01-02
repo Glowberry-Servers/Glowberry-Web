@@ -12,7 +12,7 @@
     margin: auto;
 }
 
-.server-list-options {
+.pretty-listing-options {
     display: flex;
     flex-flow: row;
     flex: 0 1 auto;
@@ -20,9 +20,9 @@
     width: 100%;
 }
 
-.vertical-divider#servers-divider {
+.vertical-divider#search-divider {
     border: 1px solid var(--details);
-    height: 32px;
+    height: 33px;
     margin-bottom: 0;
     padding-bottom: 0;
     transform: translateY(-1px);
@@ -84,11 +84,10 @@ hr {
     border-top: 1px solid var(--details);
     color: var(--details);
     width: 98%;
-    height: 1px;
-    margin: 1px auto auto;
+    margin: 0.18em auto auto;
 }
 
-.server-list {
+.pretty-list {
     display: flex;
     flex-flow: column;
     flex: 1 1 auto;

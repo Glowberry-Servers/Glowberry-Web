@@ -1,0 +1,209 @@
+@import url("header.css");
+@import url("pallette.css");
+
+
+#permissions-user-selector {
+    background: yellow;
+    display: flex;
+    flex: 0 1 auto;
+    width: 100%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding-top: 5%;
+    margin: auto;
+}
+
+.input-box {
+    display: flex;
+    flex-flow: row;
+    height: 30px;
+    margin-right: 26em;
+    margin-bottom: 3em;
+    margin-left: auto;
+    transform: translateY(3px);
+    align-items: center;
+    justify-content: center;
+}
+
+.input-bar {
+    display: flex;
+    flex-flow: row;
+    height: 30px;
+    margin-right: auto;
+    transform: translateY(3px);
+}
+
+.input-bar input {
+    width: 300px;
+    background-color: blue;
+    color: var(--details);
+    border: none;
+    border-bottom: 1px solid var(--details);
+    outline: none;
+    padding-right: 35px;
+    padding-left: 25px;
+    text-align: center;
+}
+
+.input-bar i {
+    transform: translate(290px, 8px);
+}
+
+.input-bar .input-button {
+    background: lightpink;
+    display: flex;
+    flex-flow: row;
+    border-radius: 5px;
+    height: 30px;
+    border: none;
+    box-shadow: none;
+    padding: 5px;
+    margin-left: 5px;
+}
+
+.input-button:hover {
+    background: lightcoral;
+    cursor: pointer;
+}
+
+.vertical-divider#search-divider {
+    border: 1px solid var(--details);
+    height: 50px;
+    padding-bottom: 0;
+    align-content: flex-start;
+    margin: 10px;
+}
+
+.user-info {
+    background: lightblue;
+    display: flex;
+    flex-flow: row;
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.user-info #user-profile-picture {
+    background: lightcoral;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    margin: 10px auto;
+}
+
+#permissions-table-container {
+    background: lime;
+    display: flex;
+    flex-flow: column;
+    flex: 1 1 auto;
+    width: 100%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#permissions-table {
+    background: lightgray;
+    display: table;
+    width: 100%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    table-layout: fixed;
+    padding: 40px 200px;
+}
+
+#permissions-table th, #permissions-table td {
+    border: 1px solid black;
+    padding: 5px;
+    width: 50%;
+    text-align: center;
+}
+
+#permissions-table .th-title {
+    margin-bottom: -10px;
+}
+
+#admin-ops {
+    background: cadetblue;
+    display: flex;
+    flex-flow: row;
+    flex: 1 1 auto;
+    width: 100%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: center;
+    gap:50px;
+}
+
+hr {
+    border: 1px solid var(--details);
+    width: 98%;
+    margin: auto;
+}
+
+.input-box-admin {
+    display: flex;
+    flex-flow: column;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-bar-admin {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    padding: 10px;
+    gap: 3px;
+    width: 322px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.input-bar-admin input {
+    width: 300px;
+    height: 30px;
+    color: var(--details);
+    border: none;
+    border-bottom: 1px solid var(--details);
+    outline: none;
+    padding-right: 35px;
+    padding-left: 25px;
+    text-align: center;
+}
+
+.input-bar-admin .input-button-admin {
+    background: lightpink;
+    border-radius: 5px;
+    height: 30px;
+    width: 300px;
+    border: none;
+    box-shadow: none;
+    padding: 5px;
+    margin: auto;
+}
+
+.input-bar-admin input:focus::placeholder {
+    color: transparent;
+}
+
+.integer-calculator {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    flex: 0 1 auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#permissions-selector {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 10px;
+    gap: 5px;
+}

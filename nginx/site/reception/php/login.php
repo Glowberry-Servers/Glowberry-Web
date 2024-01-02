@@ -18,7 +18,7 @@
     $persistent = filter_var($_POST['persistent'], FILTER_VALIDATE_BOOLEAN);
 
     // Checks the username and hashed password against the database.
-    $results = $manager->selectWithCondition(array('nickname', 'password'), "User", "nickname = '$username'");
+    $results = $manager->selectWithCondition(array('user_tag', 'password'), "User", "user_tag = '$username'");
 
     // If there are no results, the username and password are incorrect.
     if (count($results) == 0 || !password_verify($password, $results[0]['password'])) {

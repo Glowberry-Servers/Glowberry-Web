@@ -12,7 +12,7 @@
      */
     function integerContainsPermission(int $permission_target, int $permission_value) : bool
     {
-        if ($permission_value == 0) return false;
+        if ($permission_value == 0 &&! $permission_target == 0) return false;
         return ($permission_target & $permission_value) == $permission_value;
     }
     
@@ -26,8 +26,36 @@
     function userHasWebPermission(string $username, int $permission_integer) : bool
     {
         $manager = getManagerFromConfig();
-        $user_permission = $manager->selectWithCondition(array('web_app_permissions_integer'), 'User', "nickname = '$username'")[0]['web_app_permissions_integer'];
+        $user_permission = $manager->selectWithCondition(array('web_app_permissions_integer'), 'User', "user_tag = '$username'")[0]['web_app_permissions_integer'];
         $manager->getConnector()->close();
         
         return integerContainsPermission($user_permission, $permission_integer);
     }
+    
+    /**
+     * Gets the name of all the specified permissions existent within the given permission integer.
+     *
+     * @param string $table The table to get the permissions from.
+     * @param int    $permission_integer The permission integer to be checked.
+     *
+     * @return array The permissions that are contained within the given permission integer.
+     */
+    function getAllPermissionsForInteger(string $table, int $permission_integer) : array
+    {
+        $permissions = array();
+        
+        // Get all permissions from the database
+        $manager = getManagerFromConfig();
+        $webapp_permissions = $manager->selectAllWithoutCondition($table);
+        $manager->getConnector()->close();
+        
+        // Iterate through all permissions checking if the target contains it
+        foreach ($webapp_permissions as $permission)
+        {
+            if (integerContainsPermission($permission_integer, $permission['permission_integer']))
+                $permissions[] = $permission[''];
+        }
+        
+        return $permissions;
+    }
+

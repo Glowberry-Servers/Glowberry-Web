@@ -15,7 +15,7 @@
     $confirm = htmlentities($_POST["confirm_password"]);
 
     // Checks if the username is already taken.
-    $results = $manager->selectWithCondition(array('nickname'), "User", "nickname = '$username'");
+    $results = $manager->selectWithCondition(array('user_tag'), "User", "user_tag = '$username'");
     
     if (count($results) != 0) {
         http_response_code(200);
@@ -23,8 +23,8 @@
         exit();
     }
 
-    // Checks if the username is 3 to 15 characters long, alphanumeric, and doesn't contain spaces.
-    if (strlen($username) < 3 || strlen($username) > 15 || !ctype_alnum($username) || str_contains($username, ' ')) {
+    // Checks if the username is 3 to 12 characters long, alphanumeric, and doesn't contain spaces.
+    if (strlen($username) < 3 || strlen($username) > 12 || !ctype_alnum($username) || str_contains($username, ' ')) {
         http_response_code(200);
         echo json_encode(array('error' => "The username must be 3 to 15 characters long and alphanumeric.", 'element-name' => "invalid-name-error"));
         exit();

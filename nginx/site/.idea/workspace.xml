@@ -5,28 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02d0671a-156d-4b26-846f-65f4af9d69a0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/css/header.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/css/pallette.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/css/user_profile.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/js/click_handlers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/php/logout.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/php/permissions_handler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/php/web/user.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/css/permissions.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/php/web/allusers.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/php/web/header.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/php/web/permissions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../error_log" beforeDir="false" afterPath="$PROJECT_DIR$/../error_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../logs/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/access.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../logs/nginx.pid" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/nginx.pid" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/css/dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/css/pallette.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/css/pallette.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/css/user_profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/css/user_profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/js/click_handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/click_handlers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/php/permissions_handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/permissions_handler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/php/server_handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/server_handler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/php/session_handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/session_handler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/php/web/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/web/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/php/web/session_header.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/web/session_header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/php/web/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/web/user.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/sql/glowberry_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/sql/glowberry_db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reception/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/reception/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reception/forgot-password.html" beforeDir="false" afterPath="$PROJECT_DIR$/reception/forgot-password.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reception/php/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/reception/php/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reception/php/password_recovery.php" beforeDir="false" afterPath="$PROJECT_DIR$/reception/php/password_recovery.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reception/php/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/reception/php/signup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/mrkelpy/laminariacore-databases/src/mysql/MySQLServerConnector.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/mrkelpy/laminariacore-databases/src/mysql/MySQLServerConnector.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reception/welcome.html" beforeDir="false" afterPath="$PROJECT_DIR$/reception/welcome.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +45,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package.json" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
         <option value="CSS File" />
       </list>
     </option>
@@ -70,10 +72,12 @@
           <mapping local-root="$PROJECT_DIR$/app/php/permissions_handler.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/bin/Debug/nginx/site/app/php/permissions_handler.php" />
           <mapping local-root="$PROJECT_DIR$/app/php/server_handler.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/bin/Debug/nginx/site/app/php/server_handler.php" />
           <mapping local-root="$PROJECT_DIR$/app/php/session_handler.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/bin/Debug/nginx/site/app/php/session_handler.php" />
-          <mapping local-root="$PROJECT_DIR$/app/php/web/dashboard.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/bin/Debug/nginx/site/app/php/web/dashboard.php" />
+          <mapping local-root="$PROJECT_DIR$/app/php/web/allusers.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/bin/Debug/nginx/site/app/php/web/allusers.php" />
+          <mapping local-root="$PROJECT_DIR$/app/php/web/dashboard.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php/web/dashboard.php" />
+          <mapping local-root="$PROJECT_DIR$/app/php/web/permissions.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/bin/Debug/nginx/site/app/php/web/permissions.php" />
           <mapping local-root="$PROJECT_DIR$/app/php/web/user.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/bin/Debug/nginx/site/app/php/web/user.php" />
-          <mapping local-root="$PROJECT_DIR$/reception/index.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/bin/Debug/nginx/site/reception/index.php" />
-          <mapping local-root="$PROJECT_DIR$/reception/php/login.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/bin/Debug/nginx/site/reception/php/login.php" />
+          <mapping local-root="$PROJECT_DIR$/reception/index.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/reception/index.php" />
+          <mapping local-root="$PROJECT_DIR$/reception/php/login.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/reception/php/login.php" />
           <mapping local-root="$PROJECT_DIR$/reception/php/security_code.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/bin/Debug/nginx/site/reception/php/security_code.php" />
           <mapping local-root="$PROJECT_DIR$/reception/php/signup.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/bin/Debug/nginx/site/reception/php/signup.php" />
           <mapping local-root="$PROJECT_DIR$/vendor/mrkelpy/laminariacore-databases/src/mysql/MySQLDatabaseManager.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/bin/Debug/nginx/site/vendor/mrkelpy/laminariacore-databases/src/mysql/MySQLDatabaseManager.php" />
@@ -107,19 +111,20 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php/web&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.PHP&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php.debug&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\dev\CSharp\Glowberry\Glowberry-Web\nginx\site\app\php\web" />
       <recent name="C:\dev\CSharp\Glowberry\Glowberry-Web\nginx\site\app\php" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -168,7 +173,15 @@
       <workItem from="1703952383884" duration="24682000" />
       <workItem from="1704018309812" duration="15778000" />
       <workItem from="1704044978858" duration="21391000" />
-      <workItem from="1704070427790" duration="1881000" />
+      <workItem from="1704070427790" duration="2153000" />
+      <workItem from="1704103217093" duration="24932000" />
+      <workItem from="1704137631489" duration="1301000" />
+      <workItem from="1704138963981" duration="150000" />
+      <workItem from="1704139134700" duration="67000" />
+      <workItem from="1704139221724" duration="170000" />
+      <workItem from="1704139412705" duration="6586000" />
+      <workItem from="1704146359287" duration="11928000" />
+      <workItem from="1704160146847" duration="1472000" />
     </task>
     <servers />
   </component>
@@ -182,11 +195,6 @@
           <url>file://$PROJECT_DIR$/vendor/mrkelpy/laminariacore-databases/src/mysql/MySQLServerConnector.php</url>
           <line>63</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/php/web/user.php</url>
-          <line>35</line>
-          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

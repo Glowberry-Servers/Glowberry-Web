@@ -21,11 +21,22 @@ body {
 
 .menu-header-left {
     display: flex;
-    align-items: center;
+    flex-flow: row;
+    align-items: flex-start;
     justify-content: flex-start;
 }
 
-.menu-header-left h1 {
+#logo-name-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto auto auto 10px;
+    padding-left: 4px;
+    color: var(--details);
+    text-decoration: none;
+}
+
+#logo-name-container h1 {
     font-size: 18px;
     padding: 10px;
     text-align: center;
@@ -33,12 +44,11 @@ body {
     cursor: pointer;
 }
 
-.menu-header-left #logo {
+#logo-name-container #logo {
     width: 45px;
     height: 45px;
     justify-content: center;
     align-items: center;
-    margin-left: 10px;
     padding: 3px;
     cursor: pointer;
 }
@@ -47,13 +57,51 @@ body {
     border-radius: 20%;
 }
 
-.menu-header-right {
+.menu-header-center {
     display: flex;
+    flex-flow: row;
     align-items: center;
     justify-content: center;
-    margin-left: auto;
-    margin-right: 10px;
+    margin: auto;
     padding-right: 20px;
+}
+
+.menu-header-center .menu-header-nav-button {
+    display: flex;
+    flex-flow: row;
+    margin-right: 5px;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+}
+
+.menu-header-center a {
+    font-size: 15px;
+    padding: 3px;
+    text-align: center;
+    font-weight: 300;
+    margin-right: auto;
+    color: var(--details);
+    text-decoration: none;
+}
+
+.menu-header-right {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    margin-right: 8px;
+}
+
+.menu-header-right-nav-button {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    color: var(--details);
+    text-decoration: none;
+    padding: 5px;
 }
 
 .menu-header-right p {
@@ -61,7 +109,7 @@ body {
     padding: 10px;
     text-align: center;
     font-weight: 300;
-    margin-right: inherit;
+    margin-left: -8px;
 }
 
 .menu-header-right .bx {
@@ -89,6 +137,8 @@ body {
 
 .vertical-divider#profile-divider {
     height: 35px;
+    margin-right: inherit;
+    margin-left: 8px;
 }
 
 .vertical-divider#invisible {
@@ -96,3 +146,8 @@ body {
     height: 60px;
 }
 
+#logo-name-container:hover, .menu-header-nav-button:hover, .menu-header-right-nav-button:hover {
+    background: var(--tertiary);
+    border-radius: 5px;
+    transition: 0.1s;
+}

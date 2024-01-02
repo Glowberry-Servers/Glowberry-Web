@@ -6,7 +6,7 @@
     flex-flow: column;
     flex: 1 1 auto;
     width: 100%;
-    background: lime;
+    background: var(--primary);
     margin: auto;
     justify-content: flex-start;
 
@@ -24,7 +24,6 @@
     flex-flow: row;
     flex: 0 1 auto;
     width: fit-content;
-    background: rosybrown;
     height: 70px;
 }
 
@@ -34,100 +33,103 @@
     text-align: left;
     align-items: center;
     font-weight: 400;
-    color: black;
-    line-height: 20px;
+    color: var(--details);
+    line-height: 8px;
     height: 70px;
-    width: 290px;
-    border-radius: 7px;
-    background: yellow;
-    margin-left: 76px;
+    width: fit-content;
+    margin-left: -35px;
+    padding: 15px;
+
 }
 
 #profile-picture-big {
     width: 150px;
     height: 150px;
-    border: 5px solid white;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    border: 5px solid var(--details);
     border-radius: 20%;
     transform: translate(50%, -50%);
 }
 
 #edit-display-name {
-    font-size: 25px;
-    color: black;
+    font-size: 26px;
+    color: var(--details);
     border: none;
     outline: none;
     cursor: pointer;
-    line-height: 56px;
+    line-height: 55px;
 }
 
-.identification#display-name {
+.identification #display-name {
     font-size: 30px;
 }
 
-.identification#role-name {
+.identification #role-name {
     font-size: 15px;
+    line-height: 20px;
 }
 
-.identification #true-name {
+#true-name {
+    position: relative;
     font-size: 12px;
     text-align: center;
     align-items: center;
     font-weight: 400;
-    background: white;
+    background: var(--details);
     color: black;
     line-height: 20px;
     height: 20px;
     width: 110px;
     border-radius: 7px;
-    transform: translate(-200%, 60%);
+    z-index: 1;
+    transform: translate(-49%, 310%);
 }
 
 .button-panels {
-    background: mediumpurple;
     display: flex;
     flex-flow: row;
     flex: 0 1 auto;
     width: 100%;
-    height: 70px;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
     margin-top: 20px;
 }
 
-#user-buttons {
+#user-buttons-container {
     display: flex;
     flex-flow: row;
     flex: 0 1 auto;
-    width: 80%;
-    background: salmon;
-    height: 140px;
+    width: 725px;
+    border-radius: 10px;
+    height: 100px;
     justify-content: flex-start;
     align-items: center;
+    margin: 30px 82px 2em;
 }
 
-#admin-buttons {
+#user-buttons-container #user-buttons {
+    background: var(--secondary);
+    border-radius: 10px;
+}
+
+#admin-buttons-container {
+    margin-top: -3.56%;
+    margin-bottom: 2em;
+}
+
+#admin-buttons-container #admin-buttons {
     display: flex;
     flex-flow: column;
     flex: 0 1 auto;
-    width: 34%;
-    background: purple;
-    height: 200px;
+    width: inherit;
+    background: var(--secondary);
+    border-radius: 10px;
+    height: inherit;
     justify-content: flex-start;
     align-items: center;
-    transform: translateY(-30%);
 }
 
-.invisible-spacer {
-    width: 10%;
-    background: transparent;
-    height: 70px;
-}
-
-.invisible-spacer#left-button-spacer {
-    width: 6%;
-}
-
-.invisible-spacer#right-button-spacer {
-    width: 6%;
+hr {
+    width: 98%;
+    border: 1px solid var(--secondary);
+    margin: auto auto 1em auto;
 }

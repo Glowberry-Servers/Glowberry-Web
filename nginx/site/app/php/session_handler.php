@@ -15,8 +15,8 @@
     function getUserInfoFromSession(MySQLDatabaseManager $manager, string $session_id): array
     {
         
-        $username = $manager->selectWithCondition(array('nickname'), "ApplicationSession", "session_id = '$session_id'")[0]['nickname'];
-        $results = $manager->selectWithCondition(array("*"), "User", "nickname = '$username'");
+        $username = $manager->selectWithCondition(array('user_tag'), "ApplicationSession", "session_id = '$session_id'")[0]['user_tag'];
+        $results = $manager->selectWithCondition(array("*"), "User", "user_tag = '$username'");
         
         return $results[0];
     }
@@ -35,11 +35,11 @@
         // If the user is not logged in, their session is not valid.
         if ($cookie == null) return false;
         
-        $results = $manager->selectWithCondition(array('nickname'), "ApplicationSession", "session_id = '$cookie'");
+        $results = $manager->selectWithCondition(array('user_tag'), "ApplicationSession", "session_id = '$cookie'");
         
         // If the user is logged in but does not have a session, their session is not valid.
         if (count($results) == 0) return false;
-        $username = $results[0]['nickname'];
+        $username = $results[0]['user_tag'];
         
         // If the user is logged in, has a session, but the password does not match, their session is not valid.
         if (!isSessionPasswordValid($manager, $username)) return false;
@@ -62,7 +62,7 @@
         
         // Deletes the user's current session if they have one.
         if (getCurrentSessionIdFor($manager, $username) != null) {
-            $manager->deleteFrom("ApplicationSession", "nickname = '$username'");
+            $manager->deleteFrom("ApplicationSession", "user_tag = '$username'");
         }
         
         // Creates a unique session id, checking if it is already in use to avoid that 0.0000001% chance of a collision.
@@ -117,8 +117,8 @@
         if ($session_id == null) return false;
         
         // Checks if the session applies to the user's current username and password.
-        $session_password = $manager->selectWithCondition(array('session_password'), "ApplicationSession", "nickname = '$username'")[0]["session_password"];
-        $results = $manager->selectWithCondition(array('nickname'), "User", "nickname = '$username' AND password = '$session_password'");
+        $session_password = $manager->selectWithCondition(array('session_password'), "ApplicationSession", "user_tag = '$username'")[0]["session_password"];
+        $results = $manager->selectWithCondition(array('user_tag'), "User", "user_tag = '$username' AND password = '$session_password'");
         
         return count($results) != 0;
     }
@@ -133,6 +133,6 @@
      */
     function getCurrentSessionIdFor(MySQLDatabaseManager $manager, string $username): ?string
     {
-        $results = $manager->selectWithCondition(array('session_id'), "ApplicationSession", "nickname = '$username'");
+        $results = $manager->selectWithCondition(array('session_id'), "ApplicationSession", "user_tag = '$username'");
         return $results[0]['session_id'] ?? null;
     }

@@ -17,7 +17,7 @@ CREATE TABLE WebAppPermission
 INSERT INTO WebAppPermission VALUES
 ('No Permissions', 'Allows the user to do nothing, and overrides all other permissions.', 0),
 ('All Permissions', 'Allows the user to do everything.', -1),
-('Manage User', 'Allows the user to edit other users\' profiles.', 2),
+('Manage Users', 'Allows the user to edit other users\' profiles.', 2),
 ('Manage Roles', 'Allows the user to edit, create and give other users roles as high as their own.', 4),
 ('Allocate Resources', 'Allows the user to change the amount of resources allocated to other users.', 8),
 ('Reset Passwords', 'Allows the user to reset the passwords of other users, receiving the one-time usage code created.', 16),
@@ -47,7 +47,8 @@ INSERT INTO ServerPermission VALUES
 ('Start Server', 'Allows the user to start a server.', 4),
 ('Stop Server', 'Allows the user to stop a server.', 8),
 ('Restart Server', 'Allows the user to restart a server.', 16),
-('Kill Server', 'Allows the user to kill a server.', 32);
+('Kill Server', 'Allows the user to kill a server.', 32),
+('Use Console', 'Allows the user to use the console of a server.', 64);
 
 # Creates the roles table
 CREATE TABLE Role
@@ -68,7 +69,7 @@ INSERT INTO Role VALUES
 # Creates the user table
 CREATE TABLE User
 (
-	nickname                    VARCHAR(32) NOT NULL,
+	user_tag                    VARCHAR(32) NOT NULL,
 	password                    VARCHAR(64) NOT NULL,
 	display_name                VARCHAR(32) NOT NULL,
 
@@ -81,7 +82,7 @@ CREATE TABLE User
 	security_code               TEXT,
 	web_app_permissions_integer BIGINT      NOT NULL,
 
-	PRIMARY KEY (nickname),
+	PRIMARY KEY (user_tag),
 	FOREIGN KEY (role_name) REFERENCES Role (role_name)
 );
 
@@ -101,12 +102,12 @@ CREATE TABLE Server
 CREATE TABLE ServerUser
 (
 	server_uuid         VARCHAR(128) NOT NULL,
-	nickname            VARCHAR(32)  NOT NULL,
+	user_tag            VARCHAR(32)  NOT NULL,
 	permissions_integer BIGINT       NOT NULL,
 
-	PRIMARY KEY (server_uuid, nickname, permissions_integer),
+	PRIMARY KEY (server_uuid, user_tag, permissions_integer),
 	FOREIGN KEY (server_uuid) REFERENCES Server (server_uuid),
-	FOREIGN KEY (nickname) REFERENCES User (nickname)
+	FOREIGN KEY (user_tag) REFERENCES User (user_tag)
 );
 
 # Creates the ApplicationSession table, which stores the session data for the web app.
@@ -114,11 +115,11 @@ CREATE TABLE ServerUser
 CREATE TABLE ApplicationSession
 (
 	session_id VARCHAR(128) NOT NULL,
-	nickname   VARCHAR(32)  NOT NULL,
+	user_tag   VARCHAR(32)  NOT NULL,
 	session_password   VARCHAR(64)  NOT NULL,
 
 	PRIMARY KEY (session_id),
-	FOREIGN KEY (nickname) REFERENCES User (nickname)
+	FOREIGN KEY (user_tag) REFERENCES User (user_tag)
 );
 
 

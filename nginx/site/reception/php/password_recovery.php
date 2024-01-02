@@ -17,7 +17,7 @@
     $password = htmlentities($_POST["new_password"]);
 
     // Checks if the security code is valid.
-    $results = $manager->selectWithCondition(array('nickname'), "User", "security_code = '$security_code'");
+    $results = $manager->selectWithCondition(array('user_tag'), "User", "security_code = '$security_code'");
     
     if (count($results) == 0) {
         http_response_code(200);

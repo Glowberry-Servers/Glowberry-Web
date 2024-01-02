@@ -6,14 +6,14 @@
     
     /**
      * Gets a list of servers that the user has access to.
-     * @param string $username The nickname of the user.
+     * @param string $username The user_tag of the user.
      *
      * @return array The list of servers that the user has access to.
      */
     function getServersForUser(string $username) : array
     {
         $manager = getManagerFromConfig();
-        $all_results = $manager->selectAllWithCondition("ServerUser", "nickname = '$username'");
+        $all_results = $manager->selectAllWithCondition("ServerUser", "user_tag = '$username'");
         
         $servers = array();
         foreach ($all_results as $result) {
