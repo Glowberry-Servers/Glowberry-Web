@@ -26,3 +26,36 @@ export function redirectWithPost(url, data) {
     // Submit the form, effectively redirecting the user to the specified URL with the specified data
     form.submit();
 }
+
+/**
+ * Creates an AJAX request given a specific resource page in the local storage.
+ * @param page The path to the page from the document root
+ */
+export function createAjaxRequestFor(page) {
+
+    let ajax = new XMLHttpRequest();
+    ajax.open("POST", page, true);
+    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    return ajax;
+}
+
+/**
+ * Handles the process of verifying the ready state of a form and redirecting the user to the specified URL
+ * afterwards, and displaying an error message based on a received "element-name" property in the JSON response
+ *
+ * @param ajax The AJAX request object to use
+ */
+export function generalOnReadyStateHandler(ajax) {
+
+    if (ajax.readyState === 4 && ajax.status === 200) {
+
+        let json = JSON.parse(ajax.responseText);
+
+        // If the sign-up was successful, redirect to the dashboard, if not, display the error message
+        if (json.method === "POST") redirectWithPost(json.href, json);
+        else if (json.method === "GET") window.location.href = json.href;
+        else document.getElementById(json["element-name"]).innerText = json.error;
+    }
+
+}

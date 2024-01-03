@@ -3,7 +3,7 @@
 
 
 #permissions-user-selector {
-    background: yellow;
+    background: var(--primary);
     display: flex;
     flex: 0 1 auto;
     width: 100%;
@@ -16,8 +16,8 @@
     display: flex;
     flex-flow: row;
     height: 30px;
-    margin-right: 26em;
     margin-bottom: 3em;
+    margin-right: auto;
     margin-left: auto;
     transform: translateY(3px);
     align-items: center;
@@ -26,30 +26,30 @@
 
 .input-bar {
     display: flex;
+    flex: 1;
     flex-flow: row;
     height: 30px;
-    margin-right: auto;
     transform: translateY(3px);
 }
 
 .input-bar input {
-    width: 300px;
-    background-color: blue;
+    flex: 1;
+    background-color: var(--secondary);
     color: var(--details);
     border: none;
-    border-bottom: 1px solid var(--details);
     outline: none;
     padding-right: 35px;
     padding-left: 25px;
     text-align: center;
 }
 
-.input-bar i {
-    transform: translate(290px, 8px);
+.input-bar input:focus::placeholder {
+    color: transparent;
 }
 
 .input-bar .input-button {
-    background: lightpink;
+    background: var(--secondary);
+    color: var(--details);
     display: flex;
     flex-flow: row;
     border-radius: 5px;
@@ -61,7 +61,7 @@
 }
 
 .input-button:hover {
-    background: lightcoral;
+    background: var(--quaternary);
     cursor: pointer;
 }
 
@@ -71,10 +71,12 @@
     padding-bottom: 0;
     align-content: flex-start;
     margin: 10px;
+    transform: translateY(2px);
 }
 
 .user-info {
-    background: lightblue;
+    background: transparent;
+    color: var(--details);
     display: flex;
     flex-flow: row;
     flex: 0 1 auto;
@@ -82,64 +84,67 @@
     width: 100%;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 10px;
+    transform: translateY(3px);
 }
 
 .user-info #user-profile-picture {
-    background: lightcoral;
+    background: transparent;
     width: 40px;
     height: 40px;
     border-radius: 10px;
     margin: 10px auto;
 }
 
-#permissions-table-container {
-    background: lime;
+.permissions-table-container {
+    background: var(--primary);
     display: flex;
     flex-flow: column;
     flex: 1 1 auto;
     width: 100%;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     align-items: center;
     justify-content: flex-start;
+    padding: 10px 200px 40px;
 }
 
-#permissions-table {
-    background: lightgray;
+.permissions-table {
+    background: var(--primary);
+    color: var(--details);
     display: table;
     width: 100%;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     table-layout: fixed;
-    padding: 40px 200px;
+    border-collapse: collapse;
 }
 
-#permissions-table th, #permissions-table td {
-    border: 1px solid black;
+.permissions-table th, .permissions-table td {
     padding: 5px;
     width: 50%;
     text-align: center;
 }
 
-#permissions-table .th-title {
-    margin-bottom: -10px;
+.permissions-table th {
+    background: var(--quaternary);
+}
+
+.permissions-table td {
+    background: var(--secondary);
+}
+
+.permissions-table .th-title {
+    margin-bottom: -5px;
 }
 
 #admin-ops {
-    background: cadetblue;
+    background: var(--primary);
+    color: var(--details);
     display: flex;
     flex-flow: row;
     flex: 1 1 auto;
     width: 100%;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     align-items: center;
     justify-content: center;
     gap:50px;
-}
-
-hr {
-    border: 1px solid var(--details);
-    width: 98%;
-    margin: auto;
+    padding: 33px;
 }
 
 .input-box-admin {
@@ -155,7 +160,7 @@ hr {
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
+    border: 1px solid var(--quaternary);
     padding: 10px;
     gap: 3px;
     width: 322px;
@@ -167,16 +172,13 @@ hr {
     width: 300px;
     height: 30px;
     color: var(--details);
+    background: var(--secondary);
     border: none;
-    border-bottom: 1px solid var(--details);
     outline: none;
-    padding-right: 35px;
-    padding-left: 25px;
     text-align: center;
 }
 
 .input-bar-admin .input-button-admin {
-    background: lightpink;
     border-radius: 5px;
     height: 30px;
     width: 300px;
@@ -184,6 +186,7 @@ hr {
     box-shadow: none;
     padding: 5px;
     margin: auto;
+    cursor: pointer;
 }
 
 .input-bar-admin input:focus::placeholder {
@@ -196,9 +199,21 @@ hr {
     align-items: center;
     justify-content: center;
     flex: 0 1 auto;
-    border: 1px solid black;
+    border: 1px solid var(--quaternary);
     border-radius: 10px;
     padding: 10px;
+}
+
+.integer-calculator input[type="checkbox"] {
+    accent-color: var(--secondary);
+}
+
+.simple-column {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 #permissions-selector {
@@ -206,4 +221,10 @@ hr {
     grid-template-columns: repeat(5, 1fr);
     padding: 10px;
     gap: 5px;
+}
+
+hr {
+    border: 1px solid var(--secondary);
+    width: 95%;
+    margin: auto;
 }

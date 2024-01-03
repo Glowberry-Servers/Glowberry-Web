@@ -7,16 +7,20 @@
     flex: 1 1 auto;
     width: 100%;
     background: var(--primary);
-    margin: auto;
     justify-content: flex-start;
-
 }
 
-.information #wallpaper {
-    flex: 1 1 auto;
+.information .wallpaper-container {
+    height: 300px;
     width: 100%;
-    max-height: 300px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.information .wallpaper-container #wallpaper {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .in-row {
@@ -43,14 +47,16 @@
 }
 
 #profile-picture-big {
+    background: var(--header) center;
     width: 150px;
     height: 150px;
     border: 5px solid var(--details);
     border-radius: 20%;
     transform: translate(50%, -50%);
+    object-fit: cover;
 }
 
-#edit-display-name {
+#edit-display-name-button {
     font-size: 26px;
     color: var(--details);
     border: none;
@@ -132,4 +138,8 @@ hr {
     width: 98%;
     border: 1px solid var(--secondary);
     margin: auto auto 1em auto;
+}
+
+.user-action-button:hover {
+    filter: brightness(80%);
 }

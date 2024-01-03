@@ -1,17 +1,29 @@
-import {redirectWithPost} from "/app/js/page_utils.js";
+import {createAjaxRequestFor, generalOnReadyStateHandler, redirectWithPost} from "/app/js/page_utils.js";
 
 // Handles the click event for the log-out button.
 if (document.querySelector("#logout") !== null)
     document.querySelector("#logout").addEventListener("click", logOut);
 
+if (document.querySelector("#set-role") !== null)
+    document.querySelector("#set-role").addEventListener("click", setRole);
+
+if (document.querySelector('#delete-role') !== null)
+    document.querySelector('#delete-role').addEventListener("click", deleteRole);
+
+if (document.querySelector("#user-search-permissions-button") !== null)
+    document.querySelector("#user-search-permissions-button").addEventListener("click", sendToUserPermissionsPage);
+
+if (document.querySelector("#server-search-permissions-button") !== null)
+    document.querySelector("#server-search-permissions-button").addEventListener("click", sendToUserPermissionsPage);
+
 // Handles the click events for the all-users page.
-let users = document.getElementsByClassName("user");
+const users = document.getElementsByClassName("user");
 
 for (let i = 0; i < users.length; i++)
     users[i].addEventListener("click", sendToUserProfilePage);
 
 // Handles the click event for the permissions integer calculator.
-let checkboxes = document.getElementsByClassName("permission-checkbox");
+const checkboxes = document.getElementsByClassName("permission-checkbox");
 
 for (let i = 0; i < checkboxes.length; i++)
     checkboxes[i].addEventListener("change", calculatePermissionsInteger);
@@ -23,7 +35,7 @@ for (let i = 0; i < checkboxes.length; i++)
  */
 function sendToDashboard() {
     window.location.href = "/app/php/web/dashboard.php";
-    event.preventDefault()
+    event.preventDefault();
 }
 
 /**
@@ -32,7 +44,7 @@ function sendToDashboard() {
  */
 function sendToUserProfilePage() {
 
-    event.preventDefault()
+    event.preventDefault();
 
     // Parses the target_user from the assigned target
     let targetUser = event.currentTarget.innerText.split(/([@\n])/)[2];
@@ -48,9 +60,82 @@ function sendToUserProfilePage() {
 }
 
 /**
+ * Sends the user to the permissions page with the specified server and user search payloads.
+ * These will be the target server and target user for the permissions page.
+ */
+function sendToUserPermissionsPage() {
+
+    event.preventDefault();
+
+    // Parses out the server search and the user search
+    let serverSearch = document.querySelector("#server-search-permissions").value;
+    let userSearch = document.querySelector("#user-search-permissions").value;
+
+    // Replace the @ symbol if it exists in the user search
+    if (userSearch !== undefined|| userSearch !== "")
+        userSearch.replace("@", "");
+
+    // Creates an ajax request with the server search and user search payloads.
+    let ajax = createAjaxRequestFor("/app/php/web/permissions.php");
+    ajax.onreadystatechange = function () {
+        generalOnReadyStateHandler(ajax)
+    };
+
+    ajax.send("target_server=" + serverSearch + "&target_user=" + userSearch + "&redirect=true");
+}
+
+/**
+ * Grabs the elements from the page and sends an ajax request to set the role specified.
+ * If accepted, inserts or updates the role in the database.
+ * @returns void
+ */
+function setRole() {
+
+    event.preventDefault();
+
+    // Gets the role_name and role_integer from the page
+    let role_name = document.querySelector("#role-name").value;
+    let role_integer = document.querySelector("#role-permission-integer").value;
+
+    // If the role_name is undefined, null or empty, it's 0.
+    if (role_integer === "" || role_integer === null || role_integer === undefined)
+        role_integer = 0;
+
+    // Creates an ajax request with the role_name and integer payloads.
+    let ajax = createAjaxRequestFor("/app/php/operations/set_role.php");
+    ajax.onreadystatechange = function () {
+        generalOnReadyStateHandler(ajax)
+    };
+
+    ajax.send("role_name=" + role_name + "&permissions_integer=" + role_integer);
+}
+
+/**
+ * Grabs the elements from the page and sends an ajax request to delete the role specified.
+ * If accepted, inserts or updates the role in the database.
+ * @returns void
+ */
+function deleteRole() {
+
+    event.preventDefault();
+
+    // Gets the role_name from the page
+    let role_name = document.querySelector("#role-name").value;
+
+    // Creates an ajax request with the role_name and integer payloads.
+    let ajax = createAjaxRequestFor("/app/php/operations/delete_role.php");
+    ajax.onreadystatechange = function () {
+        generalOnReadyStateHandler(ajax)
+    };
+
+    ajax.send("role_name=" + role_name);
+}
+
+/**
  * This method is meant to be used in the permissions integer calculator, at the permissions
  * page for administrators only. It calculates the permissions integer based on the checkboxes
  * active.
+ * @returns void
  */
 function calculatePermissionsInteger() {
 
@@ -88,7 +173,6 @@ function calculatePermissionsInteger() {
  * @returns void
  */
 function logOut() {
-    window.location.href = "/app/php/logout.php";
-    event.preventDefault()
-
+    window.location.href = "/app/php/operations/logout.php";
+    event.preventDefault();
 }

@@ -68,7 +68,7 @@
         $existence_check = $manager->selectWithCondition(array('security_code'), "User", "security_code = '$security_code'");
     } while (count($existence_check) != 0);
     
-    $manager->insertWhole("User", array($username, $hashed_password, $username, NULL, NULL, date('Y-m-d H:i:s'), "User", 5120, $security_code, 0));
+    $manager->insertWhole("User", array($username, $hashed_password, $username, NULL, NULL, date('Y-m-d H:i:s'), "User", 5120, $security_code));
     
     http_response_code(200);
     echo json_encode(array('success' => "Signed up successfully.", 'method' => 'POST', 'href' => "/reception/php/security_code.php", 'security_code' => $security_code));

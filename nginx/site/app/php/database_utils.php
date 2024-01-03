@@ -54,3 +54,29 @@
         $manager->useDatabase($database);
         return $manager;
     }
+    
+    /**
+     * Checks if the given URL is a valid image URL.
+     * For this, it checks if the URL is accessible and if the content is a valid png image.
+     * @param string $url The URL to check.
+     *
+     * @return bool True if the URL is a valid image URL, false otherwise.
+     */
+    function checkIfImageUrlIsValid(string $url): bool
+    {
+        $image_content = @file_get_contents($url);
+        
+        // Unable to fetch image content, URL is not valid or accessible
+        if ($image_content === false) return false;
+        
+        $image_info = @getimagesizefromstring($image_content);
+        
+        // Unable to get image info, content is not a valid image
+        if ($image_info === false) return false;
+        
+        // Only allow png images
+        if ($image_info['mime'] != "image/png") return false;
+        
+        
+        return true;
+    }

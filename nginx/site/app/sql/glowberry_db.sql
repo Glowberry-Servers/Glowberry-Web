@@ -23,13 +23,12 @@ INSERT INTO WebAppPermission VALUES
 ('Reset Passwords', 'Allows the user to reset the passwords of other users, receiving the one-time usage code created.', 16),
 
 ('View Servers', 'Allows the user to view all other servers.',  32),
-('Create Servers', 'Allows the user to create servers in place of other users.', 64),
-('Delete Servers', 'Allows the user to delete servers in place of other users.', 128),
-('Manage Servers', 'Allows the user to access the files of all servers.', 256),
-('Start Servers', 'Allows the user to start servers in place of other users.', 512),
-('Stop Servers', 'Allows the user to stop servers in place of other users.', 1024),
-('Restart Servers', 'Allows the user to restart servers in place of other users.', 2048),
-('Kill Servers', 'Allows the user to kill servers in place of other users.', 4096);
+('Delete Servers', 'Allows the user to delete servers in place of other users.', 64),
+('Manage Servers', 'Allows the user to access the files of all servers.', 128),
+('Start Servers', 'Allows the user to start servers in place of other users.', 256),
+('Stop Servers', 'Allows the user to stop servers in place of other users.', 512),
+('Restart Servers', 'Allows the user to restart servers in place of other users.', 1024),
+('Kill Servers', 'Allows the user to kill servers in place of other users.', 2048);
 
 #Creates the server permissions table
 CREATE TABLE ServerPermission
@@ -61,7 +60,7 @@ CREATE TABLE Role
 
 # Fills up the Role table with the default roles for the web app.
 INSERT INTO Role VALUES
-('Administrator', 1),
+('Administrator', -1),
 ('Moderator', 2+8+32+64+128+256+512+1024),
 ('Helper', 256+512+1024),
 ('User', 0);
@@ -80,14 +79,13 @@ CREATE TABLE User
 
 	max_ram                     INT         NOT NULL,
 	security_code               TEXT,
-	web_app_permissions_integer BIGINT      NOT NULL,
 
 	PRIMARY KEY (user_tag),
 	FOREIGN KEY (role_name) REFERENCES Role (role_name)
 );
 
 # Adds the administrator user to the database
-INSERT INTO User VALUES ('admin', '$2y$10$vLqvYPi1vtsseYk8lCr3x.oaFkkdgG7NU423VzujZqXgA0VDl2tmi', 'Administration', NULL, NULL, NOW(), 'Administrator', -1, NULL, -1);
+INSERT INTO User VALUES ('admin', '$2y$10$vLqvYPi1vtsseYk8lCr3x.oaFkkdgG7NU423VzujZqXgA0VDl2tmi', 'Administration', NULL, NULL, NOW(), 'Administrator', -1, NULL);
 
 # Creates the servers table
 CREATE TABLE Server

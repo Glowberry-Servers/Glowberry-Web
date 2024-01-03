@@ -1,5 +1,11 @@
 @import url("pallette.css");
 @import url("header.css");
+@import url("header.css");
+
+body {
+    display: flex;
+    flex-flow: column;
+}
 
 .content {
     display: flex;
@@ -9,6 +15,7 @@
     background: var(--primary);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     padding-top: 5%;
+    max-height: 100%;
     margin: auto;
 }
 

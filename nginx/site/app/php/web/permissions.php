@@ -9,14 +9,27 @@
     $session_id = $_COOKIE['session_id'];
     $user = getUserInfoFromSession($manager, $session_id);
     
-    $selected_user_nickname = $_POST['target_user'];
+    // Properly format the data received from the form
+    $selected_user_nickname = $_POST['target_user'] != "" ? $_POST['target_user'] : null;
+    $selected_server = $_POST['target_server'] != "" ? $_POST['target_server'] : null;
     
-    if ($selected_user_nickname == null) $selected_user = null;
-    else $selected_user = $manager->selectAllWithCondition('users', "user_tag = '$selected_user_nickname'")[0];
+    $results = $manager->selectAllWithCondition('User', "user_tag = '$selected_user_nickname'");
+    $selected_user = count($results) > 0 ? $results[0] : null;
     
-    $selected_server = $_POST['target_server'];
+    // If we're due redirecting to the permissions page and we have a user, redirect with the arguments
+    if ($selected_user != null && isset($_POST['redirect'])) {
+        echo json_encode(array("success" => true, "method" => "POST", "href" => "/app/php/web/permissions.php",
+            "target_user" => $selected_user_nickname, "target_server" => $selected_server));
+        exit();
+    }
+    
+    // If we're due redirecting to the permissions page but we don't have a user, redirect without the arguments
+    else if (isset($_POST['redirect'])) {
+        echo json_encode(array("method" => "POST", "href" => "/app/php/web/permissions.php", "no-redirect" => true));
+        exit();
+    }
+    
     $manager->getConnector()->close();
-    
     
     /**
      * Returns the target user's profile picture.
@@ -48,7 +61,7 @@
      * @return string The permissions integer associated with the target user.
      */
     function getUserWebAppPermissionsInteger(?array $target) : string {
-        return $target == null ? "Unknown" : $target['web_app_permissions_integer'];
+        return $target == null ? "Unknown" : getUserWebAppPermissions($target['user_tag']);
     }
     
     /**
@@ -61,11 +74,18 @@
      */
     function getUserServerPermissionsInteger(?array $target, ?string $server_name) : string {
         
-        if ($target == null) return "Server not found";
+        if ($target == null || $server_name == null) return "Server not found";
         
         $manager = getManagerFromConfig();
-        $server = $manager->selectAllWithCondition('servers', "server_name = '$server_name'")[0]["server_uuid"];
-        return $manager->selectAllWithCondition('ServerUser', "user_tag = '{$target['user_tag']}' AND server_uuid = '$server'")[0]["permissions_integer"];
+        $results = $manager->selectAllWithCondition('Server', "name = '$server_name'");
+        
+        if (count($results) == 0) return "Server not found";
+        
+        $server = $results[0]['server_uuid'];
+        $results = $manager->selectAllWithCondition('ServerUser', "user_tag = '{$target['user_tag']}' AND server_uuid = '$server'");
+        
+        if (count($results) == 0) return "0";
+        return $results[0]['permissions_integer'];
     }
     
     /**
@@ -92,8 +112,37 @@
         
         return implode("", $html);
     }
+    
+    /**
+     * Returns all the server roles mapped to their permissions as a string of HTML containing table
+     * rows.
+     * @return string The HTML containing all the server permissions.
+     */
+    function getRolesTableHtml() : string
+    {
+        
+        // Get all roles from the database
+        $manager = getManagerFromConfig();
+        $all_roles = $manager->selectAllWithoutCondition('Role');
+        $manager->getConnector()->close();
+        
+        $html = "";
+        
+        // Iterates through all roles and displays them separated by a comma in the permissions column
+        foreach ($all_roles as $role) {
+            
+            $permission_names = implode(", ", getAllPermissionNamesForInteger('WebAppPermission', $role['permissions_integer']));
+            $html .= "
+                    <tr style='border: 1px solid var(--tertiary)'>
+                        <td>{$role['role_name']}</td>
+                        <td>{$permission_names}</td>
+                        <td>{$role['permissions_integer']}</td>
+                    </tr>";
+        }
+        
+        return $html;
+    }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -117,11 +166,20 @@
         
         <div class="input-box">
             
-            <form class="input-bar">
-                <i class='bx bx-search-alt-2'></i>
-                <input type="text" placeholder="Enter the user's tag (e.g @admin)">
-                <button class="input-button">Search</button>
-            </form>
+            <div class="simple-column">
+                
+                <form class="input-bar">
+                    <input type="text" placeholder="Enter the user's tag" id="user-search-permissions" value="<?php echo $selected_user_nickname ?? "" ?>">
+                    <button class="input-button" id="user-search-permissions-button">Search</button>
+                </form>
+                
+                <form class="input-bar">
+                    <input type="text" placeholder="Find servers by name" id="server-search-permissions" value="<?php echo $selected_server ?? ""?>">
+    
+                    <button class="input-button" id="server-search-permissions-button">Search</button>
+                </form>
+                
+            </div>
             
             <div class="vertical-divider" id="search-divider"></div>
         
@@ -135,26 +193,13 @@
 
     </div>
     
-    <div id="permissions-table-container">
+    <div class="permissions-table-container">
         
-        <table id="permissions-table">
+        <table class="permissions-table">
             
             <tr>
-                <th>Role Permissions (Web App)</th>
-                <th><p class="th-title">Server (Search)</p>
-                    
-                    <div class="input-box" style="margin: 5px">
-
-                        <form class="input-bar" style="margin-left: 7.5%">
-                            <i class='bx bx-search-alt-2'></i>
-                            <input type="text" placeholder="Enter the user's tag (e.g @admin)">
-
-                            <button class="input-button">Search</button>
-                        </form>
-
-                    </div>
-                    
-                </th>
+                <th>Role Permissions</th>
+                <th>Server Permissions</th>
             </tr>
             <tr>
                 <td>
@@ -166,14 +211,15 @@
                         if ($user_permissions != "Unknown") {
                             
                             // If it isn't, get the permission names and display them
-                            $permission_names = getAllPermissionsForInteger('WebAppPermissions', $user_permissions);
+                            $permission_names = getAllPermissionNamesForInteger('WebAppPermission', $user_permissions);
+                            sort($permission_names);
                             
                             foreach ($permission_names as $permission_name) {
                                 echo "<p>$permission_name</p>";
                             }
                         }
                         
-                        echo $user_permissions;
+                        else echo $user_permissions;
                     ?>
                 </td>
                 <td>
@@ -185,62 +231,78 @@
                         if ($user_permissions != "Server not found") {
                             
                             // If it isn't, get the permission names and display them
-                            $permission_names = getAllPermissionsForInteger('ServerPermissions', $user_permissions);
+                            $permission_names = getAllPermissionNamesForInteger('ServerPermissions', $user_permissions);
                             
                             foreach ($permission_names as $permission_name) {
                                 echo "<p>$permission_name</p>";
                             }
                         }
                         
-                        echo $user_permissions;
+                        else echo $user_permissions;
                     ?>
                 </td>
             </tr>
             
         </table>
     </div>
-    
-    <hr>
+    <?php
         
-        <?php
-            
-            // If the user doesn't have the permission to manage roles, return
-            if (!userHasWebPermission($user['user_tag'], 4))
-                return;
-            
-            echo "
+        // If the user doesn't have the permission to manage roles, return
+        if (!userHasWebPermission($user['user_tag'], 4))
+            return;
+        
+        echo "
 
-        <div id='admin-ops'>
-    
-            <div class='input-box-admin'>
-                
-                <form class='input-bar-admin'>
-                    
-                    <h3>Role Management</h3>
+    <hr>
+
+    <div id='admin-ops'>
+
+        <div class='input-box-admin'>
             
-                    <input type='text' placeholder='Enter the role name' required>
-                    <input type='number' placeholder='Enter the permission integer'>
-                    
-                    <button class='input-button-admin' id='set-role'>Set Role</button>
-                    <button class='input-button-admin' id='delete-role'>Delete Role</button>
-                </form>
+            <form class='input-bar-admin'>
+                
+                <h3>Role Management</h3>
+        
+                <input type='text' id='role-name' placeholder='Enter the role name'>
+                <input type='text' id='role-permission-integer' placeholder='Enter the permission integer'>
+                
+                <hr style='margin-top: 4px; margin-bottom: 4px'>
+                
+                <button class='input-button-admin' id='set-role'>Set Role</button>
+                <button class='input-button-admin' id='delete-role'>Delete Role</button>
+                
+                <p style='color: var(--reds); font-size: 14px' id='role-error'></p>
+            </form>
+        </div>
+        
+        <div class='integer-calculator'>
+            
+            <h3>Permissions Integer Calculator</h3>
+            
+            <div id='permissions-selector'>
+            " . getAllWebAppPermissionsHtml() . "
             </div>
             
-            <div class='integer-calculator'>
-                
-                <h3>Permissions Integer Calculator</h3>
-                
-                <div id='permissions-selector'>
-                " . getAllWebAppPermissionsHtml() . "
-                </div>
-                
-                <div id='result'>
-                    <p>Result: <span id='result-value'>0</span></p>
-                </div>
+            <div id='result'>
+                <p>Result: <span id='result-value'>0</span></p>
             </div>
         </div>
-        ";
-            ?>
+    </div>
+    
+    <hr>
+    
+    <div class='permissions-table-container''>
+        
+        <table class='permissions-table'>
+        
+            <tr style='border: 1px solid var(--secondary)'>
+                <th>Role Name</th>
+                <th>Permissions</th>
+                <th>Integer</th>
+            </tr>". getRolesTableHtml() ."</table>
+            
+    </div>";
+        ?>
 
 </body>
 </html>

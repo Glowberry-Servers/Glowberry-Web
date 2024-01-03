@@ -2,9 +2,6 @@
 
 body {
     background: var(--primary);
-    display: flex;
-    flex-flow: column;
-    flex-wrap: wrap;
     height: 100vh;
 }
 
@@ -14,12 +11,13 @@ body {
     flex: 0 1 auto;
     width: 100%;
     background: var(--header);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     color: var(--details);
-    z-index: 10;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    z-index: 2;
 }
 
 .menu-header-left {
+    flex: 1;
     display: flex;
     flex-flow: row;
     align-items: flex-start;
@@ -59,17 +57,17 @@ body {
 
 .menu-header-center {
     display: flex;
+    flex: 1;
     flex-flow: row;
     align-items: center;
     justify-content: center;
     margin: auto;
-    padding-right: 20px;
+    text-align: center;
 }
 
 .menu-header-center .menu-header-nav-button {
     display: flex;
     flex-flow: row;
-    margin-right: 5px;
     align-items: center;
     justify-content: center;
     padding: 8px;
@@ -83,13 +81,15 @@ body {
     margin-right: auto;
     color: var(--details);
     text-decoration: none;
+    cursor: pointer;
 }
 
 .menu-header-right {
+    flex: 1;
     display: flex;
     flex-flow: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     padding: 5px;
     margin-right: 8px;
 }
