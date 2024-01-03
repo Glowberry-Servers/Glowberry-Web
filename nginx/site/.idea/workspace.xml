@@ -5,37 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02d0671a-156d-4b26-846f-65f4af9d69a0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/css/modal.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/js/profile_modal_handlers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/php/modals_creator.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/php/operations/allocate_resources.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/php/operations/change_display_name.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/php/operations/change_image_resource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/php/operations/change_password.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/php/operations/change_role.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/php/operations/delete_account.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/php/operations/delete_role.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/php/operations/reset_password.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/php/operations/set_role.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/php/operations/update_server_user_permissions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../error_log" beforeDir="false" afterPath="$PROJECT_DIR$/../error_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../logs/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/access.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../logs/nginx.pid" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/nginx.pid" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/css/pallette.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/css/pallette.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/css/permissions.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/css/permissions.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/css/user_profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/css/user_profile.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/js/click_handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/click_handlers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/js/page_utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/page_utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/php/database_utils.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/database_utils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/php/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/operations/logout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/php/permissions_handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/permissions_handler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/php/web/permissions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/web/permissions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/php/web/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/web/user.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/sql/glowberry_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/sql/glowberry_db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reception/js/userops.js" beforeDir="false" afterPath="$PROJECT_DIR$/reception/js/userops.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reception/php/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/reception/php/signup.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +63,7 @@
           <mapping local-root="$PROJECT_DIR$/app/php/operations/delete_role.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php/operations/delete_role.php" />
           <mapping local-root="$PROJECT_DIR$/app/php/operations/reset_password.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php/operations/reset_password.php" />
           <mapping local-root="$PROJECT_DIR$/app/php/operations/set_role.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php/operations/set_role.php" />
+          <mapping local-root="$PROJECT_DIR$/app/php/operations/update_server_user_permissions.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php/operations/update_server_user_permissions.php" />
           <mapping local-root="$PROJECT_DIR$/app/php/permissions_handler.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php/permissions_handler.php" />
           <mapping local-root="$PROJECT_DIR$/app/php/server_handler.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/bin/Debug/nginx/site/app/php/server_handler.php" />
           <mapping local-root="$PROJECT_DIR$/app/php/session_handler.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/bin/Debug/nginx/site/app/php/session_handler.php" />
@@ -202,6 +181,7 @@
       <workItem from="1704237380253" duration="2710000" />
       <workItem from="1704240130795" duration="6347000" />
       <workItem from="1704246534519" duration="14118000" />
+      <workItem from="1704288211712" duration="9711000" />
     </task>
     <servers />
   </component>
@@ -231,11 +211,10 @@
           <line>34</line>
           <option name="timeStamp" value="75" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/app/js/profile_modal_handlers.js</url>
-          <line>270</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="74" />
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/php/operations/update_server_user_permissions.php</url>
+          <line>13</line>
+          <option name="timeStamp" value="87" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

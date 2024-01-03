@@ -13,8 +13,8 @@ if (document.querySelector('#delete-role') !== null)
 if (document.querySelector("#user-search-permissions-button") !== null)
     document.querySelector("#user-search-permissions-button").addEventListener("click", sendToUserPermissionsPage);
 
-if (document.querySelector("#server-search-permissions-button") !== null)
-    document.querySelector("#server-search-permissions-button").addEventListener("click", sendToUserPermissionsPage);
+if (document.querySelector("#user-server-permissions-update-button") !== null)
+    document.querySelector("#user-server-permissions-update-button").addEventListener("click", updateServerUserPermissions);
 
 // Handles the click events for the all-users page.
 const users = document.getElementsByClassName("user");
@@ -22,11 +22,17 @@ const users = document.getElementsByClassName("user");
 for (let i = 0; i < users.length; i++)
     users[i].addEventListener("click", sendToUserProfilePage);
 
-// Handles the click event for the permissions integer calculator.
-const checkboxes = document.getElementsByClassName("permission-checkbox");
+// Gets both the webapp and server permission checkboxes
+const webAppCheckboxes = document.getElementsByClassName("webapp-permission-checkbox");
+const serverCheckboxes = document.getElementsByClassName("server-permission-checkbox");
 
-for (let i = 0; i < checkboxes.length; i++)
-    checkboxes[i].addEventListener("change", calculatePermissionsInteger);
+// Adds the calculatePermissionsInteger function to both
+
+for (let i = 0; i < webAppCheckboxes.length; i++)
+    webAppCheckboxes[i].addEventListener("change", calculatePermissionsInteger);
+
+for (let i = 0; i < serverCheckboxes.length; i++)
+    serverCheckboxes[i].addEventListener("change", calculatePermissionsInteger);
 
 
 /**
@@ -132,16 +138,41 @@ function deleteRole() {
 }
 
 /**
- * This method is meant to be used in the permissions integer calculator, at the permissions
- * page for administrators only. It calculates the permissions integer based on the checkboxes
- * active.
+ * Grabs the elements from the page and sends an ajax request to update the server user permissions.
+ * @returns void
+ */
+function updateServerUserPermissions() {
+
+    event.preventDefault();
+
+    // Gets the server name and user's name from the page
+    let targetUser = document.querySelector("#user-search-permissions").value;
+    let serverName = document.querySelector("#server-search-permissions").value;
+    let permissionsInteger = document.querySelector("#server-permissions-integer").value;
+
+    targetUser = targetUser.replace("@", "");
+
+    // Creates an ajax request with the server_name and user_name payloads.
+    let ajax = createAjaxRequestFor("/app/php/operations/update_server_user_permissions.php");
+    ajax.onreadystatechange = function () {
+        generalOnReadyStateHandler(ajax)
+    };
+
+    ajax.send("server_name=" + serverName + "&target_user=" + targetUser + "&permissions_integer=" + permissionsInteger);
+}
+
+/**
+ * Gets the assigned permission value from the checkbox and adds it to the result value in the same
+ * calculator div.
  * @returns void
  */
 function calculatePermissionsInteger() {
 
     // Gets the permission value from the checkbox and the result value from the result input
-    let resultValue = document.querySelector("#result-value");
-    let allPermissions = document.getElementsByClassName("permission-checkbox");
+    let calculator = event.currentTarget.parentElement.parentElement;
+    let resultValue = calculator.querySelector("p span");
+    let allPermissions = document.getElementsByClassName(event.currentTarget.className);
+
     resultValue.innerText = 0;  // Resets the result value to 0
 
     for (let i = 0; i < allPermissions.length; i++) {

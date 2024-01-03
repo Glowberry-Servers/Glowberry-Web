@@ -29,6 +29,51 @@
     }
     
     /**
+     * Checks if the given user has the specified permission integer for the given server.
+     * @param string $username           The username of the user to be checked.
+     * @param string $server_name        The name of the server to be checked.
+     * @param int    $permission_integer The permission integer to be checked.
+     *
+     * @return bool Whether the user has the specified permission integer.
+     */
+    function userHasServerPermission(string $username, string $server_name, int $permission_integer) : bool
+    {
+        $server_uuid = getServerUUIDFromName($server_name);
+        if ($server_uuid == null) return false;
+        
+        // Get the user's permissions for the server
+        $manager = getManagerFromConfig();
+        $results = $manager->selectWithCondition(array('permissions_integer'), 'ServerUser', "server_uuid = '$server_uuid' AND user_tag = '$username'");
+        $manager->getConnector()->close();
+        
+        // If the user does not have any permissions for the server, return false
+        if (count($results) == 0) return false;
+        $user_permissions = $results[0]['permissions_integer'];
+        
+        // A binary comparison with 0 will return a wrong result, so we need to handle it separately
+        if ($user_permissions != 0 && $permission_integer != 0) return true;
+        
+        return integerContainsPermission($user_permissions, $permission_integer);
+    }
+    
+    /**
+     * Gets the UUID of the server based on the name from the database.
+     * @param string $server_name The name of the server to get the UUID for.
+     *
+     * @return string|null The UUID of the server, or null if it does not exist.
+     */
+    function getServerUUIDFromName(string $server_name) : ?string
+    {
+        $manager = getManagerFromConfig();
+        $results = $manager->selectAllWithCondition('Server', "name = '$server_name'");
+        $manager->getConnector()->close();
+        
+        if (count($results) == 0) return null;
+        
+        return $results[0]['server_uuid'];
+    }
+    
+    /**
      * Gets the name of all the specified permissions existent within the given permission integer.
      *
      * @param string $table The table to get the permissions from.

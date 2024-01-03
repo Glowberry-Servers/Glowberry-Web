@@ -89,22 +89,26 @@
     }
     
     /**
-     * Returns all the web app permissions as a string of HTML containing named checkboxes with assigned values.
+     * Returns all the specified permissions as a string of HTML containing named checkboxes with assigned values.
+     *
+     * @param string $permission_type The type of permissions to get. Either "WebApp" or "Server".
+     *
      * @return string The HTML containing all the web app permissions.
      */
-    function getAllWebAppPermissionsHtml() : string {
+    function getAllPermissionsOfTypeHtml(string $permission_type) : string {
         
         // Get all permissions from the database
         $manager = getManagerFromConfig();
-        $all_permissions = $manager->selectAllWithoutCondition('WebAppPermission');
+        $all_permissions = $manager->selectAllWithoutCondition($permission_type.'Permission');
         $manager->getConnector()->close();
+        $permission_type = strtolower($permission_type);
         
         $html = array();
         
         // Iterates through all permissions and displays them as a named checkbox with an assigned value
         foreach ($all_permissions as $permission) {
             $html[] = "
-<div class='permission-checkbox' data-permission-integer='{$permission['permissions_integer']}'>
+<div class='{$permission_type}-permission-checkbox' data-permission-integer='{$permission['permissions_integer']}'>
     <input type='checkbox' id='{$permission['permission_name']}'>
     <label for='{$permission['permission_name']}'>{$permission['permission_name']}</label>
 </div>";
@@ -166,19 +170,20 @@
         
         <div class="input-box">
             
+            <div class="simple-column" style="position: relative">
+                <form class="input-bar">
+                    <input type="text" placeholder="Enter the user's tag (e.g '@admin')" id="user-search-permissions" value="<?php echo $selected_user_nickname ?? "" ?>">
+                    <input type="text" placeholder="Insert the server name (e.g 'CoolServer')" id="server-search-permissions" value="<?php echo $selected_server ?? ""?>">
+                    <input type="text" placeholder="Insert the server permissions integer" id="server-permissions-integer">
+                </form>
+                
+                <p style="position:absolute; white-space: nowrap; bottom: -25px; color: var(--reds); font-size: 12px; width: fit-content" id="server-permissions-update-error"></p>
+            </div>
+            
+
             <div class="simple-column">
-                
-                <form class="input-bar">
-                    <input type="text" placeholder="Enter the user's tag" id="user-search-permissions" value="<?php echo $selected_user_nickname ?? "" ?>">
-                    <button class="input-button" id="user-search-permissions-button">Search</button>
-                </form>
-                
-                <form class="input-bar">
-                    <input type="text" placeholder="Find servers by name" id="server-search-permissions" value="<?php echo $selected_server ?? ""?>">
-    
-                    <button class="input-button" id="server-search-permissions-button">Search</button>
-                </form>
-                
+                <button class="input-button" id="user-search-permissions-button">Search</button>
+                <button class="input-button" id="user-server-permissions-update-button">Update</button>
             </div>
             
             <div class="vertical-divider" id="search-divider"></div>
@@ -189,8 +194,6 @@
             </div>
 
         </div>
-
-
     </div>
     
     <div class="permissions-table-container">
@@ -245,6 +248,18 @@
             
         </table>
     </div>
+
+    <div class='integer-calculator' style="width: 70%; margin: auto">
+
+        <h3>Server Permissions Integer Calculator</h3>
+
+        <div class='permissions-selector'>
+            <?php echo getAllPermissionsOfTypeHtml('Server') ?>
+        </div>
+
+        <p>Result: <span>0</span></p>
+    </div>
+    
     <?php
         
         // If the user doesn't have the permission to manage roles, return
@@ -253,7 +268,7 @@
         
         echo "
 
-    <hr>
+    <hr style='margin-top: 25px'>
 
     <div id='admin-ops'>
 
@@ -277,15 +292,13 @@
         
         <div class='integer-calculator'>
             
-            <h3>Permissions Integer Calculator</h3>
+            <h3>Web App Permissions Integer Calculator</h3>
             
-            <div id='permissions-selector'>
-            " . getAllWebAppPermissionsHtml() . "
+            <div class='permissions-selector'>
+            " . getAllPermissionsOfTypeHtml('WebApp') . "
             </div>
             
-            <div id='result'>
-                <p>Result: <span id='result-value'>0</span></p>
-            </div>
+            <p>Result: <span>0</span></p>
         </div>
     </div>
     

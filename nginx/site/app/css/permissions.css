@@ -5,96 +5,97 @@
 #permissions-user-selector {
     background: var(--primary);
     display: flex;
+    flex-flow: row;
     flex: 0 1 auto;
     width: 100%;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     padding-top: 5%;
     margin: auto;
+    align-content: center;
+    justify-content: center;
+    gap: 20px
 }
 
 .input-box {
     display: flex;
-    flex-flow: row;
-    height: 30px;
-    margin-bottom: 3em;
-    margin-right: auto;
-    margin-left: auto;
-    transform: translateY(3px);
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-bottom: 3em;
 }
 
 .input-bar {
     display: flex;
-    flex: 1;
-    flex-flow: row;
-    height: 30px;
-    transform: translateY(3px);
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin: 0 10px;
 }
 
 .input-bar input {
-    flex: 1;
+    width: 100%;
     background-color: var(--secondary);
     color: var(--details);
     border: none;
     outline: none;
-    padding-right: 35px;
-    padding-left: 25px;
+    height: 30px;
+    padding: 5px;
     text-align: center;
+    min-width: 280px;
+}
+
+.input-button {
+    background: var(--secondary);
+    color: var(--details);
+    border-radius: 5px;
+    height: 30px;
+    border: none;
+    box-shadow: none;
+    padding: 5px;
+    cursor: pointer;
 }
 
 .input-bar input:focus::placeholder {
     color: transparent;
 }
 
-.input-bar .input-button {
-    background: var(--secondary);
-    color: var(--details);
-    display: flex;
-    flex-flow: row;
-    border-radius: 5px;
-    height: 30px;
-    border: none;
-    box-shadow: none;
-    padding: 5px;
-    margin-left: 5px;
+.input-button:hover {
+    background: var(--tertiary);
 }
 
-.input-button:hover {
-    background: var(--quaternary);
-    cursor: pointer;
+.simple-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .vertical-divider#search-divider {
     border: 1px solid var(--details);
     height: 50px;
-    padding-bottom: 0;
-    align-content: flex-start;
     margin: 10px;
     transform: translateY(2px);
 }
 
 .user-info {
-    background: transparent;
-    color: var(--details);
     display: flex;
-    flex-flow: row;
-    flex: 0 1 auto;
-    flex-wrap: wrap;
-    width: 100%;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    transform: translateY(3px);
+    margin-top: 10px;
 }
 
 .user-info #user-profile-picture {
-    background: transparent;
     width: 40px;
     height: 40px;
     border-radius: 10px;
-    margin: 10px auto;
 }
+
+.user-info #user-display-name {
+    color: var(--details);
+    margin: 0;
+}
+
 
 .permissions-table-container {
     background: var(--primary);
@@ -202,10 +203,11 @@
     border: 1px solid var(--quaternary);
     border-radius: 10px;
     padding: 10px;
+    color: var(--details);
 }
 
 .integer-calculator input[type="checkbox"] {
-    accent-color: var(--secondary);
+    accent-color: var(--header);
 }
 
 .simple-column {
@@ -216,7 +218,7 @@
     gap: 10px;
 }
 
-#permissions-selector {
+.permissions-selector {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     padding: 10px;
