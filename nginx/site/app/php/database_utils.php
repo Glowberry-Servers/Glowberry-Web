@@ -12,7 +12,7 @@
     function getManagerFromConfig(): MySQLDatabaseManager
     {
         
-        $mysql_config_path = $_SERVER["DOCUMENT_ROOT"] . "/mysql_config.json";
+        $mysql_config_path = $_SERVER["DOCUMENT_ROOT"] . "/app_config.json";
         $sql_script_path = $_SERVER["DOCUMENT_ROOT"] . "/app/sql/glowberry_db.sql";
         
         $mysql_config = json_decode(file_get_contents($mysql_config_path), true);

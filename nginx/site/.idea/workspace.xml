@@ -4,16 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02d0671a-156d-4b26-846f-65f4af9d69a0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/php/operations/update_server_user_permissions.php" afterDir="false" />
+    <list default="true" id="02d0671a-156d-4b26-846f-65f4af9d69a0" name="Changes" comment="Created all the needed endpoints for the program and finished the console webpage">
+      <change afterPath="$PROJECT_DIR$/app/js/console_handler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/js/search_handlers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/php/operations/build_server.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/php/operations/get_server_versions_for.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../webserver/extensions/HttpListenerRequestExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/.idea.Glowberry-Web/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/.idea.Glowberry-Web/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Glowberry-Web.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../Glowberry-Web.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../error_log" beforeDir="false" afterPath="$PROJECT_DIR$/../error_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../logs/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/access.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../logs/nginx.pid" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/nginx.pid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/site.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/site.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/css/dashboard.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/css/permissions.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/css/permissions.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/js/click_handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/click_handlers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/php/permissions_handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/permissions_handler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/php/web/permissions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/web/permissions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/js/dashboard_modal_handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/css/console.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/js/profile_modal_handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/modal_handlers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/php/database_utils.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/database_utils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/php/server_handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/server_handler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/php/web/allusers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/web/allusers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/php/web/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/web/dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/php/web/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/web/user.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/app_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../obj/Debug/Glowberry-Web.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../obj/Debug/Glowberry-Web.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webserver/GlowberryAPIGetEndpoints.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../webserver/GlowberryAPIGetEndpoints.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webserver/GlowberryAPIPostEndpoints.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../webserver/GlowberryAPIPostEndpoints.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webserver/GlowberryWebServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../webserver/GlowberryWebServer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webserver/extensions/HttpListenerResponseExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../webserver/extensions/HttpListenerResponseExtensions.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +51,8 @@
       <list>
         <option value="package.json" />
         <option value="composer.json" />
-        <option value="CSS File" />
         <option value="HTML File" />
+        <option value="CSS File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -61,13 +81,16 @@
           <mapping local-root="$PROJECT_DIR$/app/php/operations/change_role.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php/operations/change_role.php" />
           <mapping local-root="$PROJECT_DIR$/app/php/operations/delete_account.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php/operations/delete_account.php" />
           <mapping local-root="$PROJECT_DIR$/app/php/operations/delete_role.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php/operations/delete_role.php" />
+          <mapping local-root="$PROJECT_DIR$/app/php/operations/get_server_versions_for.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php/operations/get_server_versions_for.php" />
           <mapping local-root="$PROJECT_DIR$/app/php/operations/reset_password.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php/operations/reset_password.php" />
           <mapping local-root="$PROJECT_DIR$/app/php/operations/set_role.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php/operations/set_role.php" />
           <mapping local-root="$PROJECT_DIR$/app/php/operations/update_server_user_permissions.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php/operations/update_server_user_permissions.php" />
           <mapping local-root="$PROJECT_DIR$/app/php/permissions_handler.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php/permissions_handler.php" />
+          <mapping local-root="$PROJECT_DIR$/app/php/requests.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php/requests.php" />
           <mapping local-root="$PROJECT_DIR$/app/php/server_handler.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/bin/Debug/nginx/site/app/php/server_handler.php" />
           <mapping local-root="$PROJECT_DIR$/app/php/session_handler.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/bin/Debug/nginx/site/app/php/session_handler.php" />
           <mapping local-root="$PROJECT_DIR$/app/php/web/allusers.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/bin/Debug/nginx/site/app/php/web/allusers.php" />
+          <mapping local-root="$PROJECT_DIR$/app/php/web/console.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/bin/Debug/nginx/site/app/php/web/console.php" />
           <mapping local-root="$PROJECT_DIR$/app/php/web/dashboard.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php/web/dashboard.php" />
           <mapping local-root="$PROJECT_DIR$/app/php/web/permissions.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php/web/permissions.php" />
           <mapping local-root="$PROJECT_DIR$/app/php/web/user.php" remote-root="C:/dev/CSharp/Glowberry/Glowberry-Web/bin/Debug/nginx/site/app/php/web/user.php" />
@@ -123,8 +146,8 @@
       <recent name="C:\dev\CSharp\Glowberry\Glowberry-Web\nginx\site\app\php" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\dev\CSharp\Glowberry\Glowberry-Web\nginx\site\app\php\operations" />
       <recent name="C:\dev\CSharp\Glowberry\Glowberry-Web\nginx\site\app\php" />
+      <recent name="C:\dev\CSharp\Glowberry\Glowberry-Web\nginx\site\app\php\operations" />
       <recent name="C:\dev\CSharp\Glowberry\Glowberry-Web\nginx\site\app\php\pages" />
       <recent name="C:\dev\CSharp\Glowberry\Glowberry-Web\nginx\site\app\css" />
       <recent name="C:\dev\CSharp\Glowberry\Glowberry-Web\nginx\site\reception\php" />
@@ -181,43 +204,29 @@
       <workItem from="1704237380253" duration="2710000" />
       <workItem from="1704240130795" duration="6347000" />
       <workItem from="1704246534519" duration="14118000" />
-      <workItem from="1704288211712" duration="9711000" />
+      <workItem from="1704288211712" duration="14788000" />
+      <workItem from="1704307527047" duration="15590000" />
     </task>
+    <task id="LOCAL-00001" summary="Finished the server permissioning system">
+      <option name="closed" value="true" />
+      <created>1704302390109</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1704302390110</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Finished the server permissioning system" />
+    <MESSAGE value="Created all the needed endpoints for the program and finished the console webpage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created all the needed endpoints for the program and finished the console webpage" />
+  </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/php/operations/change_image_resource.php</url>
-          <line>41</line>
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/php/operations/delete_account.php</url>
-          <line>52</line>
-          <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/php/operations/change_role.php</url>
-          <line>13</line>
-          <option name="timeStamp" value="73" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/php/operations/reset_password.php</url>
-          <line>34</line>
-          <option name="timeStamp" value="75" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/php/operations/update_server_user_permissions.php</url>
-          <line>13</line>
-          <option name="timeStamp" value="87" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="set_role.php">
         <watch expression="$user" />

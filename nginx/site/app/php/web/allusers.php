@@ -37,7 +37,7 @@
         
         <div class='user-card-left-text' style='flex: 1;'>
             <h2 style='margin: 0; font-size: 1.5em;'>" . $user['display_name'] . "
-                <span class='target' style='font-size: 0.6em; color: #adadad;'>@" . $user['user_tag'] . "</span>
+                <span class='target user-card-tag' style='font-size: 0.6em; color: #adadad;'>@" . $user['user_tag'] . "</span>
             </h2>
             <p>Role: " . $user['role_name'] . "</p>
         </div>
@@ -66,6 +66,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="/app/css/dashboard.css">
     <script type="module" src="/app/js/click_handlers.js"></script>
+    <script src="/app/js/search_handlers.js"></script>
 </head>
 
 <body>
@@ -78,7 +79,7 @@
 
             <form id="search-bar">
                 <i class='bx bx-search-alt-2' style="transform: translate(270px, 8px);"></i>
-                <input style="width:280px" type="text" placeholder="Find users by tag (e.g @admin)">
+                <input id='users-search-input' style="width:280px" type="text" placeholder="Find users by tag (e.g @admin)">
                 <div class="vertical-divider" id="search-divider" style="height: 32px;"></div>
             </form>
             

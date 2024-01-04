@@ -1,7 +1,6 @@
 @import url("header.css");
 @import url("pallette.css");
 
-
 #permissions-user-selector {
     background: var(--primary);
     display: flex;

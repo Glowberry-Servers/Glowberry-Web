@@ -71,20 +71,26 @@ body {
 }
 
 .option-button {
-    background: #40ad4b;
+    display: flex;
+    flex-flow: row;
+    gap: 4px;
+    background: var(--greens);
     font-size: 13px;
-    align-items: center;
-    text-align: center;
     border: none;
     outline: none;
     border-radius: 5px;
-    color: var(--details);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    color: var(--alternative-details);
+    padding: 5px 10px;
     margin-right: 16px;
     margin-left: 20px;
-    margin-bottom: 2px;
-    padding: 5px;
     cursor: pointer;
+    align-items: center;
+    justify-items: center;
+}
+
+.option-button i {
+    text-align: center;
+    font-size: 18px;
 }
 
 hr {

@@ -16,6 +16,9 @@ if (document.querySelector("#user-search-permissions-button") !== null)
 if (document.querySelector("#user-server-permissions-update-button") !== null)
     document.querySelector("#user-server-permissions-update-button").addEventListener("click", updateServerUserPermissions);
 
+    if (document.querySelector("#server-type-input") !== null)
+    document.querySelector("#server-type-input").addEventListener("change", changeServerVersionsList);
+
 // Handles the click events for the all-users page.
 const users = document.getElementsByClassName("user");
 
@@ -64,6 +67,34 @@ function sendToUserProfilePage() {
     // Otherwise, we're going to be sent to the target_user's profile page
     redirectWithPost("/app/php/web/user.php", {target_user: targetUser});
 }
+
+
+/**
+ * Gets the server type from the server type input and sends an ajax request to get the server versions
+ * for the specified server type. Then, changes the innerHTML of the options for the server versions to the
+ * received HTML.
+ */
+function changeServerVersionsList() {
+
+        event.preventDefault();
+
+        let selectedType = document.querySelector("#server-type-input").value;
+
+        // Creates an ajax request with the server_name payload.
+        let ajax = createAjaxRequestFor("/app/php/operations/get_server_versions_for.php");
+        ajax.onreadystatechange = function () {
+
+            if (ajax.readyState === 4 && ajax.status === 200) {
+
+                let html = ajax.responseText;
+                let selectElement = document.querySelector("#server-version-input");
+                selectElement.innerHTML = html;
+            }
+        };
+
+        ajax.send("server_type=" + selectedType);
+}
+
 
 /**
  * Sends the user to the permissions page with the specified server and user search payloads.

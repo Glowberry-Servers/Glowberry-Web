@@ -41,7 +41,7 @@
         <img src='" . $server['icon'] . "' alt='Server Icon' style='max-width: 70px; height: auto; margin-right: 15px;'>
         
         <div class='server-card-left-text' style='flex: 1;'>
-            <h2 style='margin: 0; font-size: 1em;'>" . $server['name'] . "</h2>
+            <h2 class='server-card-name' style='margin: 0; font-size: 1em;'>" . $server['name'] . "</h2>
             <p>Status: ". $server['status-html'] . "</p>
             <p>IP: " . $server['server-ip'] . "</p>
         </div>

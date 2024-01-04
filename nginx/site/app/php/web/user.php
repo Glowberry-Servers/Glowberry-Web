@@ -262,7 +262,7 @@
     <link rel="stylesheet" href="/app/css/modal.css">
     <link rel="stylesheet" href="/app/css/user_profile.css">
     <script type="module" src="/app/js/click_handlers.js"></script>
-    <script type="module" src="/app/js/profile_modal_handlers.js"></script>
+    <script type="module" src="/js/modal_handlers.js"></script>
 </head>
 
 <body>
