@@ -1,0 +1,153 @@
+@import url("pallette.css");
+
+body {
+    background: var(--primary);
+    height: 100vh;
+}
+
+.menu-header {
+    display: flex;
+    flex-flow: row;
+    flex: 0 1 auto;
+    width: 100%;
+    background: var(--header);
+    color: var(--details);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+.menu-header-left {
+    flex: 1;
+    display: flex;
+    flex-flow: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+#logo-name-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto auto auto 10px;
+    padding-left: 4px;
+    color: var(--details);
+    text-decoration: none;
+}
+
+#logo-name-container h1 {
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+#logo-name-container #logo {
+    width: 45px;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    cursor: pointer;
+}
+
+#profile-picture {
+    border-radius: 20%;
+}
+
+.menu-header-center {
+    display: flex;
+    flex: 1;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+}
+
+.menu-header-center .menu-header-nav-button {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+}
+
+.menu-header-center a {
+    font-size: 15px;
+    padding: 3px;
+    text-align: center;
+    font-weight: 300;
+    margin-right: auto;
+    color: var(--details);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.menu-header-right {
+    flex: 1;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 5px;
+    margin-right: 8px;
+}
+
+.menu-header-right-nav-button {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    color: var(--details);
+    text-decoration: none;
+    padding: 5px;
+}
+
+.menu-header-right p {
+    font-size: 15px;
+    padding: 10px;
+    text-align: center;
+    font-weight: 300;
+    margin-left: -8px;
+}
+
+.menu-header-right .bx {
+    display: flex;
+    flex-flow: column;
+    font-size: 25px;
+    text-align: center;
+    padding: 5px;
+    color: inherit;
+    margin-right: inherit;
+    cursor: pointer;
+}
+
+.menu-header-right .bx span {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.menu-header-right img {
+    width: 40px;
+    height: 40px;
+    margin-right: inherit;
+    cursor: pointer;
+}
+
+.vertical-divider#profile-divider {
+    height: 35px;
+    margin-right: inherit;
+    margin-left: 8px;
+}
+
+.vertical-divider#invisible {
+    border: none;
+    height: 60px;
+}
+
+#logo-name-container:hover, .menu-header-nav-button:hover, .menu-header-right-nav-button:hover {
+    background: var(--tertiary);
+    border-radius: 5px;
+    transition: 0.1s;
+}

@@ -12,6 +12,7 @@
         <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +37,10 @@
         <ApplicationIcon>..\Glowberry-Assets\main\logo-webserver.ico</ApplicationIcon>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="LaminariaCore_Winforms">
+          <HintPath>..\GlowberryDLL\bin\Release\LaminariaCore_Winforms.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.CSharp" />
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
@@ -65,6 +70,7 @@
         <Compile Include="attributes\Endpoint.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="webserver\extensions\HttpListenerRequestExtensions.cs" />
         <Compile Include="webserver\extensions\HttpListenerResponseExtensions.cs" />
         <Compile Include="webserver\GlowberryAPIGetEndpoints.cs" />
         <Compile Include="webserver\GlowberryAPIPostEndpoints.cs" />

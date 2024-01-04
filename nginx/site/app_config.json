@@ -1,0 +1,8 @@
+{
+  "user": "root",
+  "password": "",
+  "host": "localhost",
+  "database": "glowberry",
+
+  "glowberry_webserver_api" : "http://localhost:34556/api"
+}

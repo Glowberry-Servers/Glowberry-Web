@@ -1,0 +1,231 @@
+@import url("header.css");
+@import url("pallette.css");
+
+#permissions-user-selector {
+    background: var(--primary);
+    display: flex;
+    flex-flow: row;
+    flex: 0 1 auto;
+    width: 100%;
+    padding-top: 5%;
+    margin: auto;
+    align-content: center;
+    justify-content: center;
+    gap: 20px
+}
+
+.input-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3em;
+}
+
+.input-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin: 0 10px;
+}
+
+.input-bar input {
+    width: 100%;
+    background-color: var(--secondary);
+    color: var(--details);
+    border: none;
+    outline: none;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+    min-width: 280px;
+}
+
+.input-button {
+    background: var(--secondary);
+    color: var(--details);
+    border-radius: 5px;
+    height: 30px;
+    border: none;
+    box-shadow: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.input-bar input:focus::placeholder {
+    color: transparent;
+}
+
+.input-button:hover {
+    background: var(--tertiary);
+}
+
+.simple-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.vertical-divider#search-divider {
+    border: 1px solid var(--details);
+    height: 50px;
+    margin: 10px;
+    transform: translateY(2px);
+}
+
+.user-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.user-info #user-profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.user-info #user-display-name {
+    color: var(--details);
+    margin: 0;
+}
+
+
+.permissions-table-container {
+    background: var(--primary);
+    display: flex;
+    flex-flow: column;
+    flex: 1 1 auto;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 200px 40px;
+}
+
+.permissions-table {
+    background: var(--primary);
+    color: var(--details);
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.permissions-table th, .permissions-table td {
+    padding: 5px;
+    width: 50%;
+    text-align: center;
+}
+
+.permissions-table th {
+    background: var(--quaternary);
+}
+
+.permissions-table td {
+    background: var(--secondary);
+}
+
+.permissions-table .th-title {
+    margin-bottom: -5px;
+}
+
+#admin-ops {
+    background: var(--primary);
+    color: var(--details);
+    display: flex;
+    flex-flow: row;
+    flex: 1 1 auto;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap:50px;
+    padding: 33px;
+}
+
+.input-box-admin {
+    display: flex;
+    flex-flow: column;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-bar-admin {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--quaternary);
+    padding: 10px;
+    gap: 3px;
+    width: 322px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.input-bar-admin input {
+    width: 300px;
+    height: 30px;
+    color: var(--details);
+    background: var(--secondary);
+    border: none;
+    outline: none;
+    text-align: center;
+}
+
+.input-bar-admin .input-button-admin {
+    border-radius: 5px;
+    height: 30px;
+    width: 300px;
+    border: none;
+    box-shadow: none;
+    padding: 5px;
+    margin: auto;
+    cursor: pointer;
+}
+
+.input-bar-admin input:focus::placeholder {
+    color: transparent;
+}
+
+.integer-calculator {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    flex: 0 1 auto;
+    border: 1px solid var(--quaternary);
+    border-radius: 10px;
+    padding: 10px;
+    color: var(--details);
+}
+
+.integer-calculator input[type="checkbox"] {
+    accent-color: var(--header);
+}
+
+.simple-column {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.permissions-selector {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 10px;
+    gap: 5px;
+}
+
+hr {
+    border: 1px solid var(--secondary);
+    width: 95%;
+    margin: auto;
+}

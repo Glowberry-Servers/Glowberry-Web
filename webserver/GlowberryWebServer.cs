@@ -1,11 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using System.Threading.Tasks;
+using glowberry.api;
 using glowberry.common;
 using glowberry.attributes;
+using glowberry.common.factories;
+using glowberry.utils;
 using glowberry.webserver.extensions;
+using LaminariaCore_Winforms.common;
 
 namespace glowberry.webserver
 {
@@ -24,6 +31,16 @@ namespace glowberry.webserver
         /// The HttpListener object that will be used to listen for incoming requests.
         /// </summary>
         private HttpListener Listener { get; set; }
+        
+        /// <summary>
+        /// The factory object that will be used to get all of the server type mappings.
+        /// </summary>
+        private ServerTypeMappingsFactory MappingsFactory { get; } = new ServerTypeMappingsFactory();
+        
+        /// <summary>
+        /// The section of the filesystem that contains all of the servers.
+        /// </summary>
+        private Section ServersSection { get; }
 
         /// <summary>
         /// Make the constructor for the GlowberryWebServer class; Singleton enforced. <br/>
@@ -33,6 +50,34 @@ namespace glowberry.webserver
         {
             this.Listener = new HttpListener();
             this.Listener.Prefixes.Add("http://localhost:34556/api/");
+            
+            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string glowberryPath = Path.Combine(appDataPath, ".Glowberry");
+            
+            this.ServersSection = new FileManager(glowberryPath).AddSection("servers");
+        }
+
+        /// <summary>
+        /// Prepares the web server by updating the server versions cache and performing all the checks
+        /// provided by the API to ensure that the web server will provide the information as expected.
+        /// </summary>
+        /// <returns>Whether the preparation was successful</returns>
+        private async Task<bool> Prepare()
+        {
+            try
+            {
+                // Tries to update the cache files for all of the server types.
+                foreach (string serverType in this.MappingsFactory.GetSupportedServerTypes())
+                    await ResourceLoader.UpdateCacheFileForServerType(serverType, this.MappingsFactory);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                // If any error occurs, log it and return false.
+                Logging.Logger.Fatal("A fatal error occured during initialisation and the server had to exit: " + e);
+                return false;
+            }
         }
 
         /// <summary>
@@ -40,6 +85,9 @@ namespace glowberry.webserver
         /// </summary>
         public void Run()
         {
+            Logging.Logger.Info("Initialising the Glowberry Web Server...");
+            if (!this.Prepare().Result) return;
+            
             try
             {
                 this.Listener.Start();
@@ -54,7 +102,7 @@ namespace glowberry.webserver
                     Logging.Logger.Info($@"Received a request from {context.Request?.RemoteEndPoint?.Address} - {endpointRequested}");
                     HttpListenerResponse response = this.TryExecuteEndpointMethod(endpointRequested, context);
 
-                    Logging.Logger.Info($"Send a response with status code {response.StatusCode}, size {response.ContentLength64} of type {response.ContentType} back to {context.Request?.RemoteEndPoint?.Address}");
+                    Logging.Logger.Info($"Sent a response with status code {response.StatusCode}, size {response.ContentLength64} of type {response.ContentType} back to {context.Request?.RemoteEndPoint?.Address}");
                     context.Response.Close();
                 }
             }
@@ -79,14 +127,21 @@ namespace glowberry.webserver
         /// <returns>The response returned by the method</returns>
         private HttpListenerResponse TryExecuteEndpointMethod(string endpoint, HttpListenerContext context)
         {
-            MethodInfo method = this.GetType().GetMethods(BindingFlags.NonPublic | BindingFlags.Default)
-                .FirstOrDefault(x => x.GetCustomAttribute<Endpoint>().Name == endpoint);
+            try
+            {
+                MethodInfo method = this.GetType().GetMethods(BindingFlags.NonPublic | BindingFlags.Instance)
+                    .Where(x => x.CustomAttributes.Any(y => y.AttributeType == typeof(Endpoint)))
+                    .FirstOrDefault(x => endpoint.Contains(x.GetCustomAttribute<Endpoint>()?.Name ?? throw new InvalidOperationException()));
+                
+                // If the method is null, then the endpoint doesn't exist
+                if (method == null || context.Request == null) return EndpointError(context);
             
-            // If the method is null, then the endpoint doesn't exist.
-            if (method == null || context.Request == null) return EndpointError(context);
+                // If the method is not null, then the endpoint exists, so we can call it.
+                return (HttpListenerResponse) method.Invoke(this, new object[] {context});
+                
+            }
+            catch (Exception e) { return EndpointError(context); }   
             
-            // If the method is not null, then the endpoint exists, so we can call it.
-            return (HttpListenerResponse) method.Invoke(this, new object[] {context});
         }
         
         /// <summary>
@@ -110,5 +165,10 @@ namespace glowberry.webserver
             response.WriteJson(body);
             return response;
         }
+        
+        /// <summary>
+        /// Returns an empty dictionary to be used as a response body in json.
+        /// </summary>
+        private static Dictionary<string, dynamic> GetEmptyResponseJson() => new Dictionary<string, dynamic>();
     }
 }

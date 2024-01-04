@@ -5,59 +5,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b98175ca-01ae-4c08-9fb7-8d8c3da1a9fa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/nginx/site/app/php/operations/delete_server.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx/site/app/php/operations/get_console.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx/site/app/php/operations/send_message.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx/site/app/php/operations/server_cleanup.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Glowberry-Web/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Glowberry-Web/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/conf/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/conf/nginx.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/.idea/jsLibraryMappings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/app.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/mysql_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/mysql_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/src/css/login_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/css/login_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/src/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/src/js/ajax/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/js/ajax/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/src/php/app/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/php/app/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/src/php/database_utils.php" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/php/database_utils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/src/php/userops/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/php/userops/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/src/sql/glowberry_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/sql/glowberry_db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/src/welcome.html" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/welcome.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/autoload.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/composer/ClassLoader.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/composer/InstalledVersions.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/composer/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/composer/autoload_classmap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/composer/autoload_namespaces.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/composer/autoload_psr4.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/composer/autoload_real.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/composer/autoload_static.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/composer/installed.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/composer/installed.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/mrkelpy/laminariacore-databases/LaminariaCore-Databases.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/mrkelpy/laminariacore-databases/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/mrkelpy/laminariacore-databases/composer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/mrkelpy/laminariacore-databases/composer.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/mrkelpy/laminariacore-databases/composer.phar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/mrkelpy/laminariacore-databases/src/mysql/MySQLDatabaseManager.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/mrkelpy/laminariacore-databases/src/mysql/MySQLServerConnector.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/mrkelpy/laminariacore-databases/vendor/autoload.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/mrkelpy/laminariacore-databases/vendor/composer/ClassLoader.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/mrkelpy/laminariacore-databases/vendor/composer/InstalledVersions.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/mrkelpy/laminariacore-databases/vendor/composer/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/mrkelpy/laminariacore-databases/vendor/composer/autoload_classmap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/mrkelpy/laminariacore-databases/vendor/composer/autoload_namespaces.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/mrkelpy/laminariacore-databases/vendor/composer/autoload_psr4.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/mrkelpy/laminariacore-databases/vendor/composer/autoload_real.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/mrkelpy/laminariacore-databases/vendor/composer/autoload_static.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/mrkelpy/laminariacore-databases/vendor/composer/installed.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/site/vendor/mrkelpy/laminariacore-databases/vendor/composer/installed.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx/error_log" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/error_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx/logs/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/logs/access.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx/logs/nginx.pid" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/logs/nginx.pid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx/site/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx/site/app/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/app/css/dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx/site/app/js/click_handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/app/js/click_handlers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx/site/app/js/console_handler.js" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/app/js/console_handler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx/site/app/js/modal_handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/app/js/modal_handlers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx/site/app/js/page_utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/app/js/page_utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx/site/app/php/operations/build_server.php" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/app/php/operations/build_server.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx/site/app/php/server_handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/app/php/server_handler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx/site/app/php/web/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/site/app/php/web/dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Glowberry-Web.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Glowberry-Web.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webserver/GlowberryAPIGetEndpoints.cs" beforeDir="false" afterPath="$PROJECT_DIR$/webserver/GlowberryAPIGetEndpoints.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webserver/GlowberryAPIPostEndpoints.cs" beforeDir="false" afterPath="$PROJECT_DIR$/webserver/GlowberryAPIPostEndpoints.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webserver/GlowberryWebServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/webserver/GlowberryWebServer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/16/9e6af824/Number.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/55/6410a997/Task`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/b2/c72b7b9c/Directory.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/b3/6e84541f/WaitHandle.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/ca/a65f1d44/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/f3/cc52c1c0/__Error.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/42bcbc9f7dab4b3c8b9646a15c9d1f282a00/06/355cbdbb/AbstractBaseOperations.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5e0ef42108704efcb926023c5c7e4b7913200/08/b1ab7e0b/ServerTypeMappingsFactory.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5e0ef42108704efcb926023c5c7e4b7913200/18/e5a18454/MCVRequestHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5e0ef42108704efcb926023c5c7e4b7913200/25/91764d55/ResourceLoader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5e0ef42108704efcb926023c5c7e4b7913200/32/482fb7db/ServerAPI.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5e0ef42108704efcb926023c5c7e4b7913200/9b/fa474041/ServerStarting.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5e0ef42108704efcb926023c5c7e4b7913200/ba/d3d590f1/ServerEditing.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/af45d3d7b7734926bfa73589529349fa29a00/50/f914a6ea/HtmlWeb.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../GlowberryDLL/api/server/ServerBuilding.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../GlowberryDLL/api/server/ServerInteractions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../GlowberryDLL/common/ServerEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../GlowberryDLL/common/server/builders/abstraction/AbstractServerBuilder.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -73,6 +67,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.3493635&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;project.propDebugger&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -115,6 +110,11 @@
       <workItem from="1703817884113" duration="323000" />
       <workItem from="1703818760075" duration="1922000" />
       <workItem from="1703827826251" duration="34000" />
+      <workItem from="1704307833964" duration="19224000" />
+      <workItem from="1704337169935" duration="400000" />
+      <workItem from="1704337710859" duration="5091000" />
+      <workItem from="1704343965609" duration="426000" />
+      <workItem from="1704344618027" duration="3647000" />
     </task>
     <task id="LOCAL-00001" summary="Reached a stable point in development; XDebug has been added and configuration is needed. Website launches with startup.bat">
       <created>1703819264828</created>

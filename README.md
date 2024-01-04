@@ -9,6 +9,8 @@ A Web Version of the Glowberry-Launcher application, aiming to provide a multi-u
 - .NET Framework 4.2.7
 - MySQL Database
 
+Aside from the requirements, in order to begin development you'll have to build the C# project at least once, to create the bin/Debug file.
+
 # License
 
 This project is licensed under the MIT License - see the LICENSE file for details.

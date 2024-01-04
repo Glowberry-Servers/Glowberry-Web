@@ -30,6 +30,19 @@ namespace glowberry.webserver.extensions
             response.OutputStream.Write(buffer, 0, buffer.Length);
             response.OutputStream.Close();
         }
+
+        /// <summary>
+        /// Overloaded method for writing a JSON body into the response object, but with a dictionary of strings.
+        /// </summary>
+        /// <param name="response">The response object to apply the writing into</param>
+        /// <param name="body">A dictionary to be converted into JSON with everything to be transmitted.</param>
+        public static void WriteJson(this HttpListenerResponse response, Dictionary<string, string> body)
+        {
+            // Converts the dictionary into a dictionary of dynamic objects and calls the other method.
+            Dictionary<string, dynamic> dynamicBody = new Dictionary<string, dynamic>();
+            foreach (KeyValuePair<string, string> pair in body) dynamicBody.Add(pair.Key, pair.Value);
+            response.WriteJson(dynamicBody);
+        }
         
     }
 }

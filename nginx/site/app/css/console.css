@@ -1,0 +1,72 @@
+@import url('header.css');
+@import url('pallette.css');
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    color: #ffffff;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 12px;
+    margin: 2%;
+    border-radius: 10px;
+}
+
+#console {
+    display: flex;
+    flex-flow: column;
+    flex: 1 0 0;
+    background: var(--tertiary);
+    color: var(--details);
+    padding: 5px;
+    overflow-y: scroll;
+    flex-direction: column;
+}
+
+data-server-id {
+    display: none;
+}
+
+#console p {
+    margin: 10px;
+}
+
+.container #input-container {
+    display: flex;
+    flex-direction: row;
+
+    width: inherit;
+    align-items: center;
+    background: var(--secondary);
+}
+
+#input-container input {
+    flex: 1 1 auto;
+    background: var(--secondary);
+    border: none;
+    color: var(--details);
+    font-size: 12px;
+    padding: 5px;
+    outline: none;
+}
+
+#input-container button {
+    background: var(--quaternary);
+    border: none;
+    color: var(--details);
+    font-size: 12px;
+    padding: 10px 40px;
+    cursor: pointer;
+}
+
+#input-prefix {
+    color: var(--details);
+    font-size: 13px;
+    padding: 5px;
+}
+

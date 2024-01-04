@@ -1,0 +1,119 @@
+@import url("pallette.css");
+@import url("header.css");
+@import url("header.css");
+
+body {
+    display: flex;
+    flex-flow: column;
+}
+
+.content {
+    display: flex;
+    flex-flow: column;
+    flex: 1 1 auto;
+    width: 100%;
+    background: var(--primary);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding-top: 5%;
+    max-height: 100%;
+    margin: auto;
+}
+
+.pretty-listing-options {
+    display: flex;
+    flex-flow: row;
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.vertical-divider#search-divider {
+    border: 1px solid var(--details);
+    height: 33px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    transform: translateY(-2px);
+    align-content: flex-start;
+}
+
+#search-bar {
+    display: flex;
+    flex-flow: row;
+    height: 30px;
+    margin-right: auto;
+    transform: translateY(3px);
+}
+
+#search-bar input {
+    width: 220px;
+    background-color: transparent;
+    color: var(--details);
+    border: none;
+    outline: none;
+    padding-right: 35px;
+    padding-left: 25px;
+    text-align: center;
+}
+
+#search-bar i {
+    color: var(--details);
+    transform: translate(210px, 8px);
+}
+
+::placeholder {
+    text-align: center;
+    padding: 10px;
+    color: inherit;
+}
+
+#search-bar input:focus::placeholder {
+    color: transparent;
+}
+
+.option-button {
+    display: flex;
+    flex-flow: row;
+    gap: 4px;
+    background: var(--greens);
+    font-size: 13px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color: var(--alternative-details);
+    padding: 5px 10px;
+    margin-right: 16px;
+    margin-left: 20px;
+    cursor: pointer;
+    align-items: center;
+    justify-items: center;
+}
+
+.option-button i {
+    text-align: center;
+    font-size: 18px;
+}
+
+hr {
+    border-top: 1px solid var(--details);
+    color: var(--details);
+    width: 98%;
+    margin: 0.18em auto auto;
+}
+
+.pretty-list {
+    display: flex;
+    flex-flow: column;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    width: 100%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    margin: auto;
+}
+
+#empty {
+    font-weight: 400;
+    text-align: center;
+    margin: auto;
+    font-size: 18px;
+    color: var(--details);
+}
