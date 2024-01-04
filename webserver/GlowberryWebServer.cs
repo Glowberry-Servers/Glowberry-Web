@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -39,7 +40,7 @@ namespace glowberry.webserver
         /// <summary>
         /// The section of the filesystem that contains all of the servers.
         /// </summary>
-        private Section ServersSection { get; } = new FileManager().AddSection("servers");
+        private Section ServersSection { get; }
 
         /// <summary>
         /// Make the constructor for the GlowberryWebServer class; Singleton enforced. <br/>
@@ -49,6 +50,11 @@ namespace glowberry.webserver
         {
             this.Listener = new HttpListener();
             this.Listener.Prefixes.Add("http://localhost:34556/api/");
+            
+            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string glowberryPath = Path.Combine(appDataPath, ".Glowberry");
+            
+            this.ServersSection = new FileManager(glowberryPath).AddSection("servers");
         }
 
         /// <summary>
@@ -121,15 +127,21 @@ namespace glowberry.webserver
         /// <returns>The response returned by the method</returns>
         private HttpListenerResponse TryExecuteEndpointMethod(string endpoint, HttpListenerContext context)
         {
-            MethodInfo method = this.GetType().GetMethods(BindingFlags.NonPublic | BindingFlags.Instance)
-                .Where(x => x.CustomAttributes.Count() != 0)
-                .FirstOrDefault(x => string.Equals(x.GetCustomAttribute<Endpoint>().Name, endpoint, StringComparison.CurrentCultureIgnoreCase));
+            try
+            {
+                MethodInfo method = this.GetType().GetMethods(BindingFlags.NonPublic | BindingFlags.Instance)
+                    .Where(x => x.CustomAttributes.Any(y => y.AttributeType == typeof(Endpoint)))
+                    .FirstOrDefault(x => endpoint.Contains(x.GetCustomAttribute<Endpoint>()?.Name ?? throw new InvalidOperationException()));
+                
+                // If the method is null, then the endpoint doesn't exist
+                if (method == null || context.Request == null) return EndpointError(context);
             
-            // If the method is null, then the endpoint doesn't exist
-            if (method == null || context.Request == null) return EndpointError(context);
+                // If the method is not null, then the endpoint exists, so we can call it.
+                return (HttpListenerResponse) method.Invoke(this, new object[] {context});
+                
+            }
+            catch (Exception e) { return EndpointError(context); }   
             
-            // If the method is not null, then the endpoint exists, so we can call it.
-            return (HttpListenerResponse) method.Invoke(this, new object[] {context});
         }
         
         /// <summary>

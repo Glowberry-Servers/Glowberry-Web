@@ -16,8 +16,8 @@ if (document.querySelector("#user-search-permissions-button") !== null)
 if (document.querySelector("#user-server-permissions-update-button") !== null)
     document.querySelector("#user-server-permissions-update-button").addEventListener("click", updateServerUserPermissions);
 
-    if (document.querySelector("#server-type-input") !== null)
-    document.querySelector("#server-type-input").addEventListener("change", changeServerVersionsList);
+if (document.querySelector("#server-type-input") !== null)
+document.querySelector("#server-type-input").addEventListener("change", changeServerVersionsList);
 
 // Handles the click events for the all-users page.
 const users = document.getElementsByClassName("user");
@@ -37,15 +37,10 @@ for (let i = 0; i < webAppCheckboxes.length; i++)
 for (let i = 0; i < serverCheckboxes.length; i++)
     serverCheckboxes[i].addEventListener("change", calculatePermissionsInteger);
 
+const serverDeleteButtons = document.getElementsByClassName("server-delete-button");
 
-/**
- * Sends the user to the dashboard page.
- * @returns void
- */
-function sendToDashboard() {
-    window.location.href = "/app/php/web/dashboard.php";
-    event.preventDefault();
-}
+for (let i = 0; i < serverDeleteButtons.length; i++)
+    serverDeleteButtons[i].addEventListener("click", deleteServer);
 
 /**
  * Sends the user to the selected user's profile page.
@@ -228,6 +223,24 @@ function calculatePermissionsInteger() {
             resultValue.innerText = parseInt(resultValue.innerText) + parseInt(permissionValue);
     }
 
+}
+
+/**
+ * Sends a request to delete the server.
+ * @returns void
+ */
+function deleteServer() {
+
+    let serverName = event.currentTarget.parentElement.parentElement.querySelector(".server-card-name").innerText;
+
+    // Creates an ajax request with the server_name payload.
+    let ajax = createAjaxRequestFor("/app/php/operations/delete_server.php");
+
+    ajax.onreadystatechange = function () {
+        generalOnReadyStateHandler(ajax)
+    };
+
+    ajax.send("server_name=" + serverName);
 }
 
 /**

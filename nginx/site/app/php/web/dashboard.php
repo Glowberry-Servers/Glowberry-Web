@@ -6,12 +6,12 @@
     include_once $_SERVER["DOCUMENT_ROOT"] . '/app/php/web/header.php';
     include_once $_SERVER["DOCUMENT_ROOT"] . '/app/php/requests.php';
     include_once $_SERVER["DOCUMENT_ROOT"] . '/app/php/modals_creator.php';
+    require $_SERVER["DOCUMENT_ROOT"] . '/app/php/operations/server_cleanup.php';
     
     $manager = getManagerFromConfig();
     $session_id = $_COOKIE['session_id'];
     $user = getUserInfoFromSession($manager, $session_id);
     $manager->getConnector()->close();
-    
     
     /**
      * Builds the HTML options string to house the server types.
@@ -98,7 +98,6 @@
     <script type="module" src="/app/js/modal_handlers.js"></script>
     <script src="/app/js/search_handlers.js"></script>
     <script src='https://code.jquery.com/jquery-3.6.4.min.js'></script>
-    
 </head>
 
 <body>

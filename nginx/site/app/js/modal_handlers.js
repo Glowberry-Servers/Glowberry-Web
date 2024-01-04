@@ -1,6 +1,5 @@
-
 // Registers all the buttons that open modal forms.
-import {createAjaxRequestFor, generalOnReadyStateHandler} from "./page_utils.js";
+import {createAjaxRequestFor, generalOnReadyStateHandler} from "/app/js/page_utils.js";
 
 const buttonRegistry = [
     document.getElementById('edit-display-name-button'),
@@ -271,23 +270,23 @@ function allocateResources() {
  */
 function resetPassword() {
 
-        let targetUser = document.getElementById('true-name').innerText;
-        let password = document.querySelector(".one-time-password-container p").innerText;
+    let targetUser = document.getElementById('true-name').innerText;
+    let password = document.querySelector(".one-time-password-container p").innerText;
 
-        // If the target user is undefined, null or empty, then its invalid.
-        if (targetUser === undefined || targetUser === null || targetUser === "") {
-            return;
-        }
+    // If the target user is undefined, null or empty, then its invalid.
+    if (targetUser === undefined || targetUser === null || targetUser === "") {
+        return;
+    }
 
-        // Prepares the target user for the AJAX request.
-        targetUser = targetUser.replace("@", "");  // Takes out the @ symbol.
-        let ajax = createAjaxRequestFor("/app/php/operations/reset_password.php")
+    // Prepares the target user for the AJAX request.
+    targetUser = targetUser.replace("@", "");  // Takes out the @ symbol.
+    let ajax = createAjaxRequestFor("/app/php/operations/reset_password.php")
 
-        ajax.onreadystatechange = function() {
-            generalOnReadyStateHandler(ajax)
-        }
+    ajax.onreadystatechange = function() {
+        generalOnReadyStateHandler(ajax)
+    }
 
-        ajax.send("target_user=" + targetUser + "&one_time_code=" + password + "&modal_id=" + event.currentTarget.id.replace("-apply", ""));
+    ajax.send("target_user=" + targetUser + "&one_time_code=" + password + "&modal_id=" + event.currentTarget.id.replace("-apply", ""));
 }
 
 /**
@@ -297,17 +296,16 @@ function resetPassword() {
 function createServer() {
 
     let serverName = document.getElementById('server-name-input').value;
-
-    // If the target user is undefined, null or empty, then its invalid.
-    if (serverName === undefined || serverName === null || serverName === "") {
-        return;
-    }
+    let serverType = document.getElementById('server-type-input').value;
+    let serverVersion = document.getElementById('server-version-input').value;
+    let javaVersion = document.getElementById('java-version-input').value;
 
     // Prepares the target user for the AJAX request.
-    let ajax = createAjaxRequestFor("/app/php/operations/create_server.php")
+    let ajax = createAjaxRequestFor("/app/php/operations/build_server.php")
 
     ajax.onreadystatechange = function() {
         generalOnReadyStateHandler(ajax)
     }
 
+    ajax.send("server_name=" + serverName + "&server_type=" + serverType + "&server_version=" + serverVersion + "&java_version=" + javaVersion + "&modal_id=" + event.currentTarget.id.replace("-apply", ""));
 }

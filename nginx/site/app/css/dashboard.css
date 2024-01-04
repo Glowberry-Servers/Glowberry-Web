@@ -32,7 +32,7 @@ body {
     height: 33px;
     margin-bottom: 0;
     padding-bottom: 0;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
     align-content: flex-start;
 }
 

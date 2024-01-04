@@ -43,7 +43,9 @@ namespace glowberry.webserver
             if (!EnsurePostRequest(context.Request, context.Response)) return context.Response;
             HttpListenerResponse response = context.Response;
 
+            // Gets the body and decodes the java path
             Dictionary<string, string> body = context.Request.GetPostData();
+            body["java"] = body["java"].Replace("%5C", @"\").Replace("%3A", ":").Replace("+", " ");
 
             // Check if the required parameters are present
             if (!body.ContainsKey("server_id") || !body.ContainsKey("type") || !body.ContainsKey("version") ||
@@ -95,6 +97,7 @@ namespace glowberry.webserver
             // Edits the server properties to disallow running with a GUI
             ServerEditing editor = new ServerAPI().Editor(body["server_id"]);
             var info = editor.GetServerInformation();
+            
             info.UseGUI = false;
             editor.UpdateServerSettings(info.ToDictionary());
 
@@ -186,6 +189,64 @@ namespace glowberry.webserver
             // Updates the server settings with the new values provided
             ServerEditing editor = new ServerAPI().Editor(body["server_id"]);
             editor.UpdateServerSettings(body);
+
+            response.StatusCode = 200;
+            response.StatusDescription = "OK";
+            return response;
+        }
+
+        /// <summary>
+        /// Deletes the server with the specified information in a fire-and-forget manner using the
+        /// editing API.
+        /// </summary>
+        [Endpoint("/api/server/delete")]
+        private HttpListenerResponse DeleteServer(HttpListenerContext context)
+        {
+            if (!EnsurePostRequest(context.Request, context.Response)) return context.Response;
+            HttpListenerResponse response = context.Response;
+
+            Dictionary<string, string> body = context.Request.GetPostData();
+
+            // Check if the required parameters are present
+            if (!body.ContainsKey("server_id"))
+            {
+                response.StatusCode = 400;
+                response.StatusDescription = "Bad Request: Missing required parameters";
+                return response;
+            }
+
+            // Deletes the server
+            ServerEditing editor = new ServerAPI().Editor(body["server_id"]);
+            editor.DeleteServer();
+
+            response.StatusCode = 200;
+            response.StatusDescription = "OK";
+            return response;
+        }
+
+        /// <summary>
+        /// Clears the output buffer of the server with the specified information in a fire-and-forget
+        /// manner using the interactions API.
+        /// </summary>
+        [Endpoint("/api/server/clear-output")]
+        private HttpListenerResponse ClearOutputBuffer(HttpListenerContext context)
+        {
+            if (!EnsurePostRequest(context.Request, context.Response)) return context.Response;
+            HttpListenerResponse response = context.Response;
+
+            Dictionary<string, string> body = context.Request.GetPostData();
+
+            // Check if the required parameters are present
+            if (!body.ContainsKey("server_id"))
+            {
+                response.StatusCode = 400;
+                response.StatusDescription = "Bad Request: Missing required parameters";
+                return response;
+            }
+
+            // Clears the output buffer of the server
+            ServerInteractions interactions = new ServerAPI().Interactions(body["server_id"]);
+            interactions.ClearOutputBuffer();
 
             response.StatusCode = 200;
             response.StatusDescription = "OK";

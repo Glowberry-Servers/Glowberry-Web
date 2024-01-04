@@ -25,7 +25,7 @@ body {
     color: var(--details);
     padding: 5px;
     overflow-y: scroll;
-    flex-direction: column-reverse;
+    flex-direction: column;
 }
 
 data-server-id {

@@ -54,7 +54,8 @@ export function generalOnReadyStateHandler(ajax) {
 
         // If the sign-up was successful, redirect to the dashboard, if not, display the error message
         if (json.method === "POST") redirectWithPost(json.href, json);
-        else if (json.method === "GET") window.location.href = json.href;
+        else if (json.method === "GET") window.location.href = json.href
+        else if (json["alert"] !== undefined) alert(json["error"])
         else document.getElementById(json["element-name"]).innerText = json.error;
     }
 

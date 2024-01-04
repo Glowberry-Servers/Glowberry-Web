@@ -27,5 +27,5 @@ if not "%ERRORLEVEL%"=="0" (
 	start /B "" php-fcgi.bat
 )
 
-:: start "" "http://localhost:34557/reception/index.php"
+start "" "http://localhost:34557/reception/index.php"
 endlocal

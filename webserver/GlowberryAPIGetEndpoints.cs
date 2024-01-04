@@ -252,7 +252,7 @@ namespace glowberry.webserver
             string serverId = context.Request.QueryString["server_id"];
             int lines = 10;  // If the amount of lines is not specified, assume 10.
 
-            if (!context.Request.QueryString.AllKeys.Contains("lines"))
+            if (context.Request.QueryString.AllKeys.Contains("lines"))
                 lines = int.Parse(context.Request.QueryString["lines"]);
             
             // Starts an instance of the server interactions api and gets the output buffer.
@@ -291,14 +291,70 @@ namespace glowberry.webserver
                 return response;
             }
             
-            // Gets the server id and starts an instance of the server editing api.
+            // Checks if the server exists, and returns an error if it doesn't.
             string serverId = context.Request.QueryString["server_id"];
+            
+            if (this.ServersSection.GetFirstSectionNamed(serverId) == null)
+            {
+                json.Add("error", "Server does not exist.");
+                response.StatusCode = 400;
+                response.ContentType = "application/json";
+                response.ContentEncoding = System.Text.Encoding.UTF8;
+                response.WriteJson(json);
+                return response;
+            }
+            
             ServerEditing editingApi = new ServerAPI().Editor(serverId);
             
             response.StatusCode = 200;
             response.ContentType = "application/json";
             response.ContentEncoding = System.Text.Encoding.UTF8;
             response.WriteJson(editingApi.GetServerInformation().ToDictionary());
+            return response;
+        }
+
+        /// <summary>
+        /// Checks if the specified server is currently running or not.
+        /// </summary>
+        [Endpoint("/api/check/running")]
+        private HttpListenerResponse IsServerRunning(HttpListenerContext context)
+        {
+            if (!EnsureGetRequest(context.Request, context.Response)) return context.Response;
+            HttpListenerResponse response = context.Response;
+
+            var json = GetEmptyResponseJson();
+
+            // If the server id is not specified, return an error.
+            if (!context.Request.QueryString.AllKeys.Contains("server_id"))
+            {
+                json.Add("error", "No server ID specified.");
+                response.StatusCode = 400;
+                response.ContentType = "application/json";
+                response.ContentEncoding = System.Text.Encoding.UTF8;
+                response.WriteJson(json);
+                return response;
+            }
+
+            // Checks if the server exists, and returns an error if it doesn't.
+            string serverId = context.Request.QueryString["server_id"];
+
+            if (this.ServersSection.GetFirstSectionNamed(serverId) == null)
+            {
+                json.Add("error", "Server does not exist.");
+                response.StatusCode = 400;
+                response.ContentType = "application/json";
+                response.ContentEncoding = System.Text.Encoding.UTF8;
+                response.WriteJson(json);
+                return response;
+            }
+
+            ServerInteractions interactionsAPI = new ServerAPI().Interactions(serverId);
+            json.Add("running", interactionsAPI.IsRunning());
+
+            response.StatusCode = 200;
+            response.ContentType = "application/json";
+            response.ContentEncoding = System.Text.Encoding.UTF8;
+            response.WriteJson(json);
             return response;
         }
     }
