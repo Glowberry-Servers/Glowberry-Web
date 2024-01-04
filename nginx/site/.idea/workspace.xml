@@ -5,29 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02d0671a-156d-4b26-846f-65f4af9d69a0" name="Changes" comment="Created all the needed endpoints for the program and finished the console webpage">
-      <change afterPath="$PROJECT_DIR$/app/php/operations/delete_server.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/php/operations/get_console.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/php/operations/send_message.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/php/operations/server_cleanup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/.idea.Glowberry-Web/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/.idea.Glowberry-Web/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../error_log" beforeDir="false" afterPath="$PROJECT_DIR$/../error_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../logs/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/access.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../logs/nginx.pid" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/nginx.pid" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/css/console.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/css/console.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/js/click_handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/click_handlers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/js/console_handler.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/console_handler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/js/modal_handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/modal_handlers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/js/page_utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/js/page_utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/php/operations/build_server.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/operations/build_server.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/php/server_handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/server_handler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/php/web/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/web/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/php/web/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/web/user.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../obj/Debug/Glowberry-Web.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../obj/Debug/Glowberry-Web.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../webserver/GlowberryAPIGetEndpoints.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../webserver/GlowberryAPIGetEndpoints.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../webserver/GlowberryAPIPostEndpoints.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../webserver/GlowberryAPIPostEndpoints.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../webserver/GlowberryWebServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../webserver/GlowberryWebServer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/php/operations/update_server_user_permissions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/operations/update_server_user_permissions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/php/web/permissions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/php/web/permissions.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,29 +96,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JavaScript Debug.forgot-password.html.executor": "Debug",
-    "JavaScript Debug.index.php.executor": "Debug",
-    "JavaScript Debug.security_code.php.executor": "Debug",
-    "JavaScript Debug.welcome.executor": "Debug",
-    "JavaScript Debug.welcome.html (1).executor": "Debug",
-    "JavaScript Debug.welcome.html.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "true",
-    "last_opened_file_path": "C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php/web",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php.debug",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.forgot-password.html.executor&quot;: &quot;Debug&quot;,
+    &quot;JavaScript Debug.index.php.executor&quot;: &quot;Debug&quot;,
+    &quot;JavaScript Debug.security_code.php.executor&quot;: &quot;Debug&quot;,
+    &quot;JavaScript Debug.welcome.executor&quot;: &quot;Debug&quot;,
+    &quot;JavaScript Debug.welcome.html (1).executor&quot;: &quot;Debug&quot;,
+    &quot;JavaScript Debug.welcome.html.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/dev/CSharp/Glowberry/Glowberry-Web/nginx/site/app/php/web&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php.debug&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\dev\CSharp\Glowberry\Glowberry-Web\nginx\site\app\php\web" />
@@ -206,6 +186,7 @@
       <workItem from="1704288211712" duration="14788000" />
       <workItem from="1704307527047" duration="35404000" />
       <workItem from="1704350713381" duration="3000" />
+      <workItem from="1704356123741" duration="826000" />
     </task>
     <task id="LOCAL-00001" summary="Finished the server permissioning system">
       <option name="closed" value="true" />
@@ -239,13 +220,23 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/php/operations/delete_server.php</url>
-          <line>33</line>
-          <option name="timeStamp" value="209" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/php/operations/delete_server.php</url>
           <line>2</line>
           <option name="timeStamp" value="210" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/php/web/permissions.php</url>
+          <line>236</line>
+          <option name="timeStamp" value="212" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/php/web/permissions.php</url>
+          <line>230</line>
+          <option name="timeStamp" value="213" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/php/web/permissions.php</url>
+          <line>79</line>
+          <option name="timeStamp" value="215" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -234,7 +234,7 @@
                         if ($user_permissions != "Server not found") {
                             
                             // If it isn't, get the permission names and display them
-                            $permission_names = getAllPermissionNamesForInteger('ServerPermissions', $user_permissions);
+                            $permission_names = getAllPermissionNamesForInteger('ServerPermission', $user_permissions);
                             
                             foreach ($permission_names as $permission_name) {
                                 echo "<p>$permission_name</p>";

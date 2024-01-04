@@ -19,7 +19,6 @@
     }
     
     $target_user = $target_user[0];
-    
     $server_name = $_POST['server_name'];
     $permissions_integer = $_POST['permissions_integer'];
     
@@ -66,8 +65,16 @@
         exit();
     }
     
-    // Actually changes the permissions
-    $manager->update('ServerUser', 'permissions_integer', $permissions_integer, "server_uuid = '$server_uuid' AND user_tag = '{$target_user['user_tag']}'");
+    // Checks if the user exists within the ServerUser table for the specified server
+    $server_user = $manager->selectAllWithCondition('ServerUser', "server_uuid = '$server_uuid' AND user_tag = '{$target_user['user_tag']}'");
+    
+    if (count($server_user) == 0)
+        
+        // Add them to the table with the specified permissions if they don't exist
+        $manager->insertWhole('ServerUser', array($server_uuid, $target_user['user_tag'], $permissions_integer));
+    
+    else $manager->update('ServerUser', 'permissions_integer', $permissions_integer, "server_uuid = '$server_uuid' AND user_tag = '{$target_user['user_tag']}'");
+    
     $manager->getConnector()->close();
     
     http_response_code(200);
